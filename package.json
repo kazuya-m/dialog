@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write \"**/*.{js,ts,tsx}\"",
+    "lint": "eslint . --ext js --ext jsx"
   },
   "dependencies": {
     "classnames": "2.2.6",
@@ -17,9 +19,23 @@
     "remark-html": "13.0.1"
   },
   "devDependencies": {
+    "@types/node": "^14.14.31",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
     "autoprefixer": "^10.2.1",
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "postcss": "^8.2.4",
-    "tailwindcss": "^2.0.2"
+    "prettier": "^2.2.1",
+    "tailwindcss": "^2.0.2",
+    "typescript": "^4.2.2"
   },
   "license": "MIT"
 }
