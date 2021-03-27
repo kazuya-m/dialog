@@ -30,7 +30,7 @@
     "src/components/post-preview.jsx",
     "src/components/post-header.jsx",
     "src/components/post-body.jsx",
-    "src/components/more-stories.jsx",
+    "src/components/latest-posts.jsx",
     "src/components/meta.jsx",
     "src/components/layout.jsx",
     "src/components/intro.jsx",
