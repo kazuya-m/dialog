@@ -1,17 +1,16 @@
-import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
-import Container from '../../components/container'
-import PostBody from '../../components/post-body'
-import Header from '../../components/header'
-import PostHeader from '../../components/post-header'
-import Layout from '../../components/layout'
-import { getPostBySlug, getAllPosts } from '../../lib/api'
-import PostTitle from '../../components/post-title'
-import { CMS_NAME } from '../../lib/constants'
-import markdownToHtml from '../../lib/markdownToHtml'
+import { useRouter } from 'next/router'
 
-export default function Post({ post, morePosts, preview }) {
+import { Container } from '../../components/container'
+import { Layout } from '../../components/layout'
+import { PostBody } from '../../components/post-body'
+import { PostHeader } from '../../components/post-header'
+import { PostTitle } from '../../components/post-title'
+import { getAllPosts, getPostBySlug } from '../../lib/api'
+import { markdownToHtml } from '../../lib/markdownToHtml'
+
+export const Post = ({ post, morePosts, preview }) => {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -19,17 +18,13 @@ export default function Post({ post, morePosts, preview }) {
   return (
     <Layout preview={preview}>
       <Container>
-        <Header />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article className="mb-32">
+            <article className="mt-10 mb-32">
               <Head>
-                <title>
-                  {post.title} | Next.js Blog Example with
-                  {CMS_NAME}
-                </title>
+                <title>{post.title}</title>
                 <meta property="og:image" content={post.ogImage.url} />
               </Head>
               <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} author={post.author} />
@@ -42,8 +37,9 @@ export default function Post({ post, morePosts, preview }) {
   )
 }
 
-export async function getStaticProps({ params }) {
+export const getStaticProps = async ({ params }) => {
   const post = getPostBySlug(params.slug, ['title', 'date', 'slug', 'author', 'content', 'ogImage', 'coverImage'])
+  // eslint-disable-next-line @typescript-eslint/await-thenable
   const content = await markdownToHtml(post.content || '')
 
   return {
@@ -57,15 +53,19 @@ export async function getStaticProps({ params }) {
 }
 
 // eslint-disable-next-line @typescript-eslint/require-await
-export async function getStaticPaths() {
+export const getStaticPaths = () => {
   const posts = getAllPosts(['slug'])
 
   return {
-    paths: posts.map((post) => ({
-      params: {
-        slug: post.slug,
-      },
-    })),
+    paths: posts.map((post) => {
+      return {
+        params: {
+          slug: post.slug,
+        },
+      }
+    }),
     fallback: false,
   }
 }
+
+export default Post

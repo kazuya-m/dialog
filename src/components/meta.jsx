@@ -1,7 +1,8 @@
-import Head from 'next/head';
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants';
+import Head from 'next/head'
 
-export default function Meta() {
+import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
+
+export const Meta = () => {
   return (
     <Head>
       <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
@@ -14,8 +15,11 @@ export default function Meta() {
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta name="description" content={`A statically generated blog example using Next.js and ${CMS_NAME}.`} />
+      <meta
+        name="description"
+        content="浦和レッズを戦術的に分析・解説し、少し深く応援するブログメディア。サポーター間での対話のきっかけとなるコンテンツを、文章や音声で配信しています。"
+      />
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
     </Head>
-  );
+  )
 }
