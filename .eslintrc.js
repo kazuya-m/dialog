@@ -18,6 +18,7 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
+      js: true,
     },
     ecmaVersion: 12,
     project: './tsconfig.eslint.json',
@@ -43,4 +44,5 @@ module.exports = {
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
   },
+  overrides: [{ files: ['src/pages/**/*.jsx'], rules: { 'import/no-default-export': 'off' } }],
 }
