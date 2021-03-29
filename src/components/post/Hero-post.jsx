@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-import { Avatar } from './avatar'
-import { CoverImage } from './cover-image'
-import { DateFormatter } from './date-formatter'
+import { Avatar } from '../shared/Avatar'
+import { DateFormatter } from '../utils/date/Date-formatter'
+import { CoverImage } from './Cover-image'
 
 export const HeroPost = ({ title, coverImage, date, excerpt, author, slug }) => {
   return (

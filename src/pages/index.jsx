@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
-import { Container } from '../components/container'
 import { Intro } from '../components/intro'
-import { LatestPosts } from '../components/latest-posts'
-import { Layout } from '../components/layout'
+import { LatestPosts } from '../components/post/Latest-posts'
+import { Layout } from '../components/separate/Layout'
+import { Container } from '../components/shared/Container'
 import { getAllPosts } from '../lib/api'
 
 export const Index = ({ allPosts }) => {

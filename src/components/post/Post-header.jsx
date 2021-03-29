@@ -1,7 +1,7 @@
-import { Avatar } from './avatar'
-import { CoverImage } from './cover-image'
-import { DateFormatter } from './date-formatter'
-import { PostTitle } from './post-title'
+import { Avatar } from '../shared/Avatar'
+import { DateFormatter } from '../utils/date/Date-formatter'
+import { CoverImage } from './Cover-image'
+import { PostTitle } from './Post-title'
 
 export const PostHeader = ({ title, coverImage, date, author }) => {
   return (
