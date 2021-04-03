@@ -3,10 +3,17 @@
 }
 
 .markdown p,
-.markdown ul,
-.markdown ol,
 .markdown blockquote {
   @apply my-6;
+}
+
+.markdown ul,
+.markdown ol {
+  @apply list-disc px-5;
+}
+
+.markdown blockquote {
+  @apply bg-gray-100 px-5 py-1 text-base;
 }
 
 .markdown h1 {
