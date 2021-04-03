@@ -7,7 +7,6 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-  "cSpell.words": [
-    "semibold"
-  ]
+  "cSpell.words": ["semibold"],
+  "css.validate": false
 }
