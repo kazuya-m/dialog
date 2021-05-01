@@ -24,7 +24,7 @@
     "src/pages/index.jsx",
     "src/pages/_document.jsx",
     "src/pages/_app.jsx",
-    "src/pages/posts/[slug].jsx",
+    "src/pages/posts/[id].jsx",
     "src/components/utils/separator/section-separator.jsx",
     "src/components/post/post-title.jsx",
     "src/components/Post-preview.jsx",
