@@ -1,7 +1,7 @@
 import Head from 'next/head'
+import { LatestPosts } from 'src/components/feed/Latest-posts'
 import { Intro } from 'src/components/intro'
 import { Pagination } from 'src/components/Pagination'
-import { LatestPosts } from 'src/components/post/Latest-posts'
 import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
 
