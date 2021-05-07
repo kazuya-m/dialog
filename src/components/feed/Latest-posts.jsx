@@ -7,13 +7,13 @@ export const LatestPosts = ({ posts }) => {
         {posts.map((post) => {
           return (
             <PostPreview
-              key={post.slug}
+              key={post.id}
               title={post.title}
-              coverImage={post.coverImage}
-              date={post.date}
+              thumbnail={post.thumbnail}
+              date={post.createdAt}
               author={post.author}
-              slug={post.slug}
-              excerpt={post.excerpt}
+              id={post.id}
+              // excerpt={post.excerpt}
             />
           )
         })}
