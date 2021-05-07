@@ -54,4 +54,9 @@ module.exports = {
     'react/jsx-filename-extension': [0],
   },
   overrides: [{ files: ['src/pages/**/*.jsx'], rules: { 'import/no-default-export': 'off' } }],
+  settings: {
+    'import/resolver': {
+      typescript: { project: './' },
+    },
+  },
 }
