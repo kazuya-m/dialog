@@ -1,13 +1,11 @@
 import Head from 'next/head'
+import { LatestPosts } from 'src/components/feed/Latest-posts'
+import { Intro } from 'src/components/intro'
+import { Pagination } from 'src/components/Pagination'
+import { Layout } from 'src/components/separate/Layout'
+import { Container } from 'src/components/shared/Container'
 
-import { Intro } from '../components/intro'
-import { LatestPosts } from '../components/post/Latest-posts'
-import { Layout } from '../components/separate/Layout'
-import { Container } from '../components/shared/Container'
-import { getAllPosts } from '../lib/api'
-
-export const Index = ({ allPosts }) => {
-  const morePosts = allPosts.slice(1)
+export const Index = ({ posts, totalCount }) => {
   return (
     <>
       <Layout>
@@ -16,20 +14,30 @@ export const Index = ({ allPosts }) => {
         </Head>
         <Container>
           <Intro />
-          {morePosts.length > 0 && <LatestPosts posts={morePosts} />}
+          <LatestPosts posts={posts} />
+          <Pagination totalCount={totalCount} />
         </Container>
       </Layout>
     </>
   )
 }
 
-// eslint-disable-next-line @typescript-eslint/require-await
-export const getStaticProps = () => {
-  const allPosts = getAllPosts(['title', 'date', 'slug', 'author', 'coverImage', 'excerpt'])
-
+export const getStaticProps = async () => {
+  const key = {
+    headers: { 'X-API-KEY': process.env.API_KEY },
+  }
+  const posts = await fetch(`${process.env.GET_POSTS_API}?offset=0&limit=5`, key)
+    .then((res) => {
+      return res.json()
+    })
+    .catch(() => {
+      return null
+    })
   return {
-    props: { allPosts },
+    props: {
+      posts: posts.contents,
+      totalCount: posts.totalCount,
+    },
   }
 }
-
 export default Index

@@ -7,6 +7,10 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-  "cSpell.words": ["semibold"],
-  "css.validate": false
+  "cSpell.words": [
+    "microcms",
+    "semibold"
+  ],
+  "css.validate": false,
+  "javascript.preferences.importModuleSpecifier": "non-relative"
 }
