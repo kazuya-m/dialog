@@ -1,8 +1,10 @@
+import Image from 'next/image'
+
 export const Avatar = ({ name, picture }) => {
   return (
-    <div className="flex items-center">
-      <img src={picture} className="w-8 h-8 rounded-full mr-4" alt={name} />
-      <div className="text-base">{name}</div>
+    <div className="flex items-center justify-start">
+      <Image src={picture} width={32} height={32} alt={name} />
+      <div className="text-base ml-2">{name}</div>
     </div>
   )
 }
