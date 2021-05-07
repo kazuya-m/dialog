@@ -9,6 +9,7 @@
     "lint": "eslint . --ext js --ext jsx"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.1",
     "classnames": "2.2.6",
     "date-fns": "2.16.1",
     "gray-matter": "4.0.2",
