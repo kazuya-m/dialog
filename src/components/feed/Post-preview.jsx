@@ -1,8 +1,7 @@
 import Link from 'next/link'
-
-import { Avatar } from '../shared/Avatar'
-import { DateFormatter } from '../utils/date/Date-formatter'
-import { CoverImage } from './Cover-image'
+import { CoverImage } from 'src/components/post/Cover-image'
+import { Avatar } from 'src/components/shared/Avatar'
+import { DateFormatter } from 'src/components/utils/date/Date-formatter'
 
 export const PostPreview = ({ title, thumbnail, date, author, id }) => {
   return (

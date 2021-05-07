@@ -3,21 +3,18 @@ import { DateFormatter } from '../utils/date/Date-formatter'
 import { CoverImage } from './Cover-image'
 import { PostTitle } from './Post-title'
 
-export const PostHeader = ({ title, coverImage, date, author }) => {
+export const PostHeader = ({ title, thumbnail, date, author }) => {
   return (
     <>
-      <PostTitle>{title}</PostTitle>
-      <div className="hidden md:block md:mb-12">
-        <Avatar name={author.name} picture={author.picture} />
-      </div>
       <div className="mb-8 md:mb-16 sm:mx-0">
-        <CoverImage title={title} src={coverImage} height={620} width={1240} />
+        <CoverImage title={title} src={thumbnail.url} height={620} width={1240} />
       </div>
-      <div className="max-w-2xl mx-auto">
-        <div className="block md:hidden mb-6">
-          <Avatar name={author.name} picture={author.picture} />
+      <PostTitle>{title}</PostTitle>
+      <div className="max-w-2xl mx-auto flex justify-between my-2">
+        <div className="block">
+          <Avatar name={author.name} picture={author.icon.url} />
         </div>
-        <div className="mb-6 text-lg">
+        <div className="text-base text-black-300">
           <DateFormatter dateString={date} />
         </div>
       </div>

@@ -1,14 +1,11 @@
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-
-import { PostBody } from '../../components/post/Post-body'
-import { PostHeader } from '../../components/post/Post-header'
-import { PostTitle } from '../../components/post/Post-title'
-import { Layout } from '../../components/separate/Layout'
-import { Container } from '../../components/shared/Container'
-import { getAllPosts, getPostBySlug } from '../../lib/api'
-import { markdownToHtml } from '../../lib/markdownToHtml'
+import { PostBody } from 'src/components/post/Post-body'
+import { PostHeader } from 'src/components/post/Post-header'
+import { Layout } from 'src/components/separate/Layout'
+import { BackToHome } from 'src/components/shared/BackToHome.tsx'
+import { Container } from 'src/components/shared/Container'
 
 export const Post = ({ post }) => {
   // const router = useRouter()
@@ -18,16 +15,15 @@ export const Post = ({ post }) => {
   return (
     <Layout>
       <Container>
-        <>
-          <article className="mt-10 mb-32">
-            <Head>
-              <title>{post.title}</title>
-              {/* <meta property="og:image" content={post.ogImage.url} /> */}
-            </Head>
-            <PostTitle>{post.title}</PostTitle>
-            <PostBody content={post.body} />
-          </article>
-        </>
+        <article className="mt-10 mb-32 max-w-2xl mx-auto">
+          <Head>
+            <title>{post.title}</title>
+            {/* <meta property="og:image" content={post.ogImage.url} /> */}
+          </Head>
+          <PostHeader title={post.title} thumbnail={post.thumbnail} date={post.publishedAt} author={post.author} />
+          <PostBody content={post.body} />
+          <BackToHome />
+        </article>
       </Container>
     </Layout>
   )
@@ -38,7 +34,7 @@ export const getStaticProps = async (context) => {
   const key = {
     headers: { 'X-API-KEY': process.env.API_KEY },
   }
-  const data = await fetch(`https://dialog.microcms.io/api/v1/posts/${id}`, key)
+  const data = await fetch(`${process.env.GET_POSTS_API}/${id}`, key)
     .then((res) => {
       return res.json()
     })
@@ -48,29 +44,16 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       post: data,
+      revalidate: 60,
     },
   }
 }
-
-//   const post = getPostBySlug(params.slug, ['title', 'date', 'slug', 'author', 'content', 'ogImage', 'coverImage'])
-//   // eslint-disable-next-line @typescript-eslint/await-thenable
-//   const content = await markdownToHtml(post.content || '')
-
-//   return {
-//     props: {
-//       post: {
-//         ...post,
-//         content,
-//       },
-//     },
-//   }
-// }
 
 export const getStaticPaths = async () => {
   const key = {
     headers: { 'X-API-KEY': process.env.API_KEY },
   }
-  const posts = await fetch('https://dialog.microcms.io/api/v1/posts', key)
+  const posts = await fetch(process.env.GET_POSTS_API, key)
     .then((res) => {
       return res.json()
     })
@@ -82,20 +65,5 @@ export const getStaticPaths = async () => {
   })
   return { paths, fallback: false }
 }
-
-// export const getStaticPaths = () => {
-//   const posts = getAllPosts(['slug'])
-
-//   return {
-//     paths: posts.map((post) => {
-//       return {
-//         params: {
-//           slug: post.slug,
-//         },
-//       }
-//     }),
-//     fallback: false,
-//   }
-// }
 
 export default Post
