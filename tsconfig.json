@@ -44,6 +44,7 @@
     "src/components/alert.jsx",
     "src/lib/markdownToHtml.jsx",
     "src/lib/constants.jsx",
-    "src/lib/api.jsx"
+    "src/lib/api.jsx",
+    "src/components/shared/MetaPost.jsx"
   ]
 }
