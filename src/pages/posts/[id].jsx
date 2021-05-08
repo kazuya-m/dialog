@@ -16,14 +16,21 @@ export const Post = ({ post }) => {
   return (
     <Layout>
       <Container>
-        <article className="mt-10 mb-12 max-w-2xl mx-auto">
+        <article className="mt-10 max-w-2xl mx-auto">
           <Head>
             <title>{post.title}</title>
             {/* <meta property="og:image" content={post.ogImage.url} /> */}
           </Head>
-          <PostHeader title={post.title} thumbnail={post.thumbnail} date={post.publishedAt} author={post.author} />
+          <PostHeader
+            title={post.title}
+            thumbnail={post.thumbnail}
+            date={post.publishedAt}
+            author={post.author}
+            category={post.category}
+          />
           <SectionSeparator />
           <PostBody content={post.body} />
+          <SectionSeparator />
         </article>
         <BackToHome />
       </Container>
