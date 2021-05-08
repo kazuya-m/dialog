@@ -8,7 +8,7 @@ export const MetaPost = ({ author, date }) => {
       <div>
         <Avatar name={author.name} picture={author.icon.url} />
       </div>
-      <div className="text-black-300">
+      <div className="text-black-300 flex items-center">
         <CalendarIcon className="h-4 w-4 mr-1 inline" />
         <DateFormatter dateString={date} />
       </div>
