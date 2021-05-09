@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import Head from 'next/head'
 import { LatestPosts } from 'src/components/feed/Latest-posts'
 import { Intro } from 'src/components/intro'
@@ -25,7 +26,7 @@ export const CategoryPage = ({ posts, totalCount, categoryName }) => {
 
 // データを取得
 export const getStaticProps = async (context) => {
-  const { categoryId } = context.params
+  const { categoryId, number } = context.params
   const key = {
     headers: { 'X-API-KEY': process.env.API_KEY },
   }
@@ -37,7 +38,7 @@ export const getStaticProps = async (context) => {
     .catch(() => {
       return null
     })
-
+  console.log(data)
   return {
     props: {
       posts: data.contents,
@@ -58,9 +59,36 @@ export const getStaticPaths = async () => {
     .catch(() => {
       return null
     })
-  const paths = categories.contents.map((content) => {
-    return `/categories/${content.id}`
+  const categoryIds = categories.contents.map((content) => {
+    return { categoryId: content.id }
   })
+
+  const allPosts = await fetch(`${process.env.GET_POSTS_API}`, key)
+    .then((res) => {
+      return res.json()
+    })
+    .catch(() => {
+      return null
+    })
+
+  const range = (start, end) => {
+    return [...Array(end - start + 1)].map((_, i) => {
+      return start + i
+    })
+  }
+
+  const categoryPages = range(1, Math.ceil(allPosts.totalCount / PER_PAGE)).map((number) => {
+    return { pageNumber: number }
+  })
+
+  const paths = categoryIds
+    .map(({ categoryId }) => {
+      return categoryPages.map(({ pageNumber }) => {
+        return { params: { categoryId, number: pageNumber.toString() } }
+      })
+    })
+    .flat()
+
   return { paths, fallback: false }
 }
 
