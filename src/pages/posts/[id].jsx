@@ -6,6 +6,7 @@ import { PostHeader } from 'src/components/post/Post-header'
 import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome.tsx'
 import { Container } from 'src/components/shared/Container'
+import { SectionSeparator } from 'src/components/utils/separator/Section-separator'
 
 export const Post = ({ post }) => {
   // const router = useRouter()
@@ -15,15 +16,23 @@ export const Post = ({ post }) => {
   return (
     <Layout>
       <Container>
-        <article className="mt-10 mb-32 max-w-2xl mx-auto">
+        <article className="mt-10 max-w-2xl mx-auto">
           <Head>
             <title>{post.title}</title>
             {/* <meta property="og:image" content={post.ogImage.url} /> */}
           </Head>
-          <PostHeader title={post.title} thumbnail={post.thumbnail} date={post.publishedAt} author={post.author} />
+          <PostHeader
+            title={post.title}
+            thumbnail={post.thumbnail}
+            date={post.publishedAt}
+            author={post.author}
+            category={post.category}
+          />
+          <SectionSeparator />
           <PostBody content={post.body} />
-          <BackToHome />
+          <SectionSeparator />
         </article>
+        <BackToHome />
       </Container>
     </Layout>
   )

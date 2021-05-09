@@ -1,25 +1,23 @@
 import Link from 'next/link'
 import { CoverImage } from 'src/components/post/Cover-image'
-import { Avatar } from 'src/components/shared/Avatar'
-import { DateFormatter } from 'src/components/utils/date/Date-formatter'
+import { MetaPost } from 'src/components/shared/MetaPost'
 
-export const PostPreview = ({ title, thumbnail, date, author, id }) => {
+export const PostPreview = ({ title, thumbnail, date, author, id, category }) => {
   return (
     <div>
       <div className="mb-5">
-        <CoverImage id={id} title={title} src={thumbnail.url} height={278} width={556} />
-      </div>
-      <h3 className="text-xl mb-3 leading-snug font-semibold">
         <Link as={`/posts/${id}`} href="/posts/[id]">
-          <a className="hover:text-black-300">{title}</a>
+          <a className="hover:text-black-300">
+            <CoverImage id={id} title={title} src={thumbnail.url} height={278} width={556} />
+          </a>
         </Link>
-      </h3>
-      <div className="flex justify-between my-2">
-        <Avatar name={author.name} picture={author.icon.url} />
-        <div className="text-lg text-black-300">
-          <DateFormatter dateString={date} />
-        </div>
       </div>
+      <Link as={`/posts/${id}`} href="/posts/[id]">
+        <a className="hover:text-black-300">
+          <h2 className="text-lg mb-2 ml-1 leading-snug font-semibold hover:text-black-300">{title}</h2>
+        </a>
+      </Link>
+      <MetaPost category={category} author={author} date={date} />
       {/* <p className="text-base text-black-400 leading-relaxed mb-4">{excerpt}</p> */}
     </div>
   )
