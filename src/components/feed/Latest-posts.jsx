@@ -13,6 +13,7 @@ export const LatestPosts = ({ posts }) => {
               date={post.createdAt}
               author={post.author}
               id={post.id}
+              category={post.category}
               // excerpt={post.excerpt}
             />
           )

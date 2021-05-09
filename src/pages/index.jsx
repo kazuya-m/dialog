@@ -13,7 +13,7 @@ export const Index = ({ posts, totalCount }) => {
           <title>DIALOG</title>
         </Head>
         <Container>
-          <Intro />
+          <Intro>LATEST ARTICLE</Intro>
           <LatestPosts posts={posts} />
           <Pagination totalCount={totalCount} />
         </Container>
