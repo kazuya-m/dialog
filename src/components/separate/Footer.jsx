@@ -1,4 +1,3 @@
-import { EXAMPLE_PATH } from '../../lib/constants'
 import { Container } from '../shared/Container'
 
 export const Footer = () => {
