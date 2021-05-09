@@ -38,7 +38,7 @@ export const getStaticProps = async (context) => {
     .catch(() => {
       return null
     })
-  console.log(data)
+
   return {
     props: {
       posts: data.contents,
