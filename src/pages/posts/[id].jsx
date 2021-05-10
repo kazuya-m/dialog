@@ -7,6 +7,8 @@ import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome.tsx'
 import { Container } from 'src/components/shared/Container'
 import { SectionSeparator } from 'src/components/utils/separator/Section-separator'
+import { POSTS_PATH } from 'src/constants'
+import { getAllPosts, getPostById } from 'src/lib/microcms/api'
 
 export const Post = ({ post }) => {
   // const router = useRouter()
@@ -40,37 +42,21 @@ export const Post = ({ post }) => {
 
 export const getStaticProps = async (context) => {
   const { id } = context.params
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  }
-  const data = await fetch(`${process.env.GET_POSTS_API}/${id}`, key)
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
+
+  const postData = await getPostById(id)
+
   return {
     props: {
-      post: data,
+      post: postData,
       revalidate: 60,
     },
   }
 }
 
 export const getStaticPaths = async () => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  }
-  const posts = await fetch(process.env.GET_POSTS_API, key)
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
+  const posts = await getAllPosts()
   const paths = posts.contents.map((content) => {
-    return `/posts/${content.id}`
+    return `/${POSTS_PATH}/${content.id}`
   })
   return { paths, fallback: false }
 }

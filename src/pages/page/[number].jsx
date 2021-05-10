@@ -7,6 +7,7 @@ import { Pagination } from 'src/components/Pagination'
 import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
 import { PER_PAGE } from 'src/constants'
+import { getAllPosts } from 'src/lib/microcms/api'
 
 export const PostPage = ({ posts, totalCount }) => {
   return (
@@ -23,34 +24,6 @@ export const PostPage = ({ posts, totalCount }) => {
       </Layout>
     </>
   )
-}
-
-export const getStaticPaths = async () => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  }
-
-  const posts = await fetch(`${process.env.GET_POSTS_API}`, key)
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
-
-  const pageNumbers = []
-
-  const range = (start, end) => {
-    return [...Array(end - start + 1)].map((_, i) => {
-      return start + i
-    })
-  }
-
-  const paths = range(1, Math.ceil(posts.totalCount / PER_PAGE)).map((number) => {
-    return `/page/${number}`
-  })
-
-  return { paths, fallback: false }
 }
 
 // データを取得
@@ -75,6 +48,22 @@ export const getStaticProps = async (context) => {
       totalCount: data.totalCount,
     },
   }
+}
+
+export const getStaticPaths = async () => {
+  const posts = await getAllPosts()
+
+  const range = (start, end) => {
+    return [...Array(end - start + 1)].map((_, i) => {
+      return start + i
+    })
+  }
+
+  const paths = range(1, Math.ceil(posts.totalCount / PER_PAGE)).map((number) => {
+    return `/page/${number}`
+  })
+
+  return { paths, fallback: false }
 }
 
 export default PostPage
