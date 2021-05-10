@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { PER_PAGE } from 'src/constants'
 
