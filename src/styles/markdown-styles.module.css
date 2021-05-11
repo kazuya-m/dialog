@@ -13,7 +13,7 @@
 }
 
 .markdown blockquote {
-  @apply border-l-2 border-black-200 ml-3 px-3 py-1 text-base text-black-300 italic;
+  @apply border-l-2 border-black-200 ml-3 px-3 py-1 text-base text-black-300 italic leading-loose;
 }
 
 .markdown h2 {
@@ -21,5 +21,9 @@
 }
 
 .markdown strong {
+  @apply border-b-2　border-red-500 border-opacity-90;
+}
+
+.markdown a {
   @apply border-b-2　border-red-500 border-opacity-90;
 }
