@@ -41,9 +41,6 @@ export const getStaticProps = async (context) => {
 }
 
 export const getStaticPaths = async () => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  }
   const categories = await getAllCategories()
   const categoryIds = categories.contents.map((content) => {
     return { categoryId: content.id }

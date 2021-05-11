@@ -30,6 +30,7 @@ export const getStaticProps = async () => {
       posts: posts.contents,
       totalCount: posts.totalCount,
     },
+    revalidate: 60,
   }
 }
 export default Index
