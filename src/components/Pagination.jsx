@@ -14,13 +14,7 @@ export const Pagination = ({ totalCount }) => {
   return (
     <ul>
       {range(1, Math.ceil(totalCount / PER_PAGE)).map((number) => {
-        return number === 1 ? (
-          <li key={number}>
-            <Link href="/">
-              <a>{number}</a>
-            </Link>
-          </li>
-        ) : (
+        return (
           <li key={number}>
             <Link href={`/page/${number}`}>
               <a>{number}</a>
