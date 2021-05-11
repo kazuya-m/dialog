@@ -19,7 +19,7 @@ export const PostPage = ({ posts, totalCount }) => {
         <Container>
           <Intro />
           <LatestPosts posts={posts} />
-          <Pagination totalCount={totalCount} />
+          <Pagination path="page" totalCount={totalCount} />
         </Container>
       </Layout>
     </>
