@@ -5,7 +5,7 @@ import { MetaPost } from 'src/components/shared/MetaPost'
 export const PostPreview = ({ title, thumbnail, date, author, id, category }) => {
   return (
     <div>
-      <div className="mb-5">
+      <div className="mb-4">
         <Link as={`/posts/${id}`} href="/posts/[id]">
           <a className="hover:text-black-300">
             <CoverImage id={id} title={title} src={thumbnail.url} height={278} width={556} />

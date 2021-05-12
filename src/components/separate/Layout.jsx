@@ -7,7 +7,7 @@ export const Layout = ({ children }) => {
     <>
       <Meta />
       <Header />
-      <div className="min-h-screen text-black-default">
+      <div className="text-black-default">
         <main>{children}</main>
       </div>
       <Footer />

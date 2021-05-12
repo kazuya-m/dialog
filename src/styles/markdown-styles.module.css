@@ -9,7 +9,7 @@
 
 .markdown ul,
 .markdown ol {
-  @apply list-disc px-10 py-3 bg-gray-50 text-sm;
+  @apply list-disc px-8 text-base;
 }
 
 .markdown blockquote {
