@@ -7,14 +7,13 @@ import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome.tsx'
 import { Container } from 'src/components/shared/Container'
 import { SectionSeparator } from 'src/components/utils/separator/Section-separator'
-import { POSTS_PATH } from 'src/constants'
-import { getAllPosts, getPostById } from 'src/lib/microcms/api'
+import { getPostById } from 'src/lib/microcms/api'
 
 export const Post = ({ post }) => {
-  // const router = useRouter()
-  // if (!router.isFallback && !post?.slug) {
-  //   return <ErrorPage statusCode={404} />
-  // }
+  const router = useRouter()
+  if (!router.isFallback && !post?.id) {
+    return <ErrorPage statusCode={404} />
+  }
   return (
     <Layout>
       <Container>
@@ -48,17 +47,14 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       post: postData,
-      revalidate: 60,
     },
+    revalidate: 60 * 5,
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export const getStaticPaths = async () => {
-  const posts = await getAllPosts()
-  const paths = posts.contents.map((content) => {
-    return `/${POSTS_PATH}/${content.id}`
-  })
-  return { paths, fallback: false }
+  return { paths: [], fallback: 'blocking' }
 }
 
 export default Post
