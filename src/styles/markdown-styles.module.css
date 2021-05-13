@@ -25,5 +25,5 @@
 }
 
 .markdown a {
-  @apply border-b-2　border-red-500 border-opacity-90;
+  @apply　text-red-500 text-opacity-70;
 }

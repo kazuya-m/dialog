@@ -17,7 +17,7 @@ export const Post = ({ post }) => {
   return (
     <Layout>
       <Container>
-        <article className="mt-10 max-w-2xl mx-auto">
+        <article className="mt-10 mb-6 max-w-2xl mx-auto">
           <Head>
             <title>{post.title}</title>
             {/* <meta property="og:image" content={post.ogImage.url} /> */}
@@ -31,9 +31,10 @@ export const Post = ({ post }) => {
           />
           <SectionSeparator />
           <PostBody content={post.body} />
-          <SectionSeparator />
         </article>
-        <BackToHome />
+        <div className="mb-6 flex justify-center">
+          <BackToHome />
+        </div>
       </Container>
     </Layout>
   )

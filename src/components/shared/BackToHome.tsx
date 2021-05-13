@@ -3,13 +3,13 @@ import Link from 'next/link'
 
 export const BackToHome = () => {
   return (
-    <Link href="/">
-      <a>
-        <div className="cursor-pointer flex items-center text-black-300">
+    <>
+      <Link href="/">
+        <a className="flex items-center cursor-pointer">
           <ChevronLeftIcon className="w-4 h-4 inline" />
-          ホームに戻る
-        </div>
-      </a>
-    </Link>
+          <p>ホームに戻る</p>
+        </a>
+      </Link>
+    </>
   )
 }
