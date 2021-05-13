@@ -14,20 +14,14 @@ export const Pagination = ({ path, totalCount }) => {
     <ul className="flex justify-center mb-4" key={currentPageNumber}>
       {pageAmount.map((number) => {
         return (
-          <Link as={`/${path}/${number}`} href={`/${path}/${number}`}>
+          <Link as={`/${path}/${number}`} href={`/${path}/${number}`} key={number}>
             <a>
               {currentPageNumber === number.toString() || (isIndex && number === 1) ? (
-                <li
-                  key={number}
-                  className="mx-1 mb-3 px-2 border border-red-500 text-white bg-red-500 rounded-md cursor-pointer"
-                >
+                <li className="mx-1 mb-3 px-2 border border-red-500 text-white bg-red-500 rounded-md cursor-pointer">
                   {number}
                 </li>
               ) : (
-                <li
-                  key={number}
-                  className="mx-1 mb-3 px-2 border border-red-100 border-opacity-25 text-red-500 bg-red-100 bg-opacity-25 rounded-md cursor-pointer"
-                >
+                <li className="mx-1 mb-3 px-2 border border-red-100 border-opacity-25 text-red-500 bg-red-100 bg-opacity-25 rounded-md cursor-pointer">
                   {number}
                 </li>
               )}
