@@ -17,11 +17,11 @@ export const Pagination = ({ path, totalCount }) => {
           <Link as={`/${path}/${number}`} href={`/${path}/${number}`} key={number}>
             <a>
               {currentPageNumber === number.toString() || (isIndex && number === 1) ? (
-                <li className="mx-1 mb-3 px-2 border border-red-500 text-white bg-red-500 rounded-md cursor-pointer">
+                <li className="px-2 mx-1 mb-3 text-white bg-red-500 border border-red-500 cursor-pointer rounded-md">
                   {number}
                 </li>
               ) : (
-                <li className="mx-1 mb-3 px-2 border border-red-100 border-opacity-25 text-red-500 bg-red-100 bg-opacity-25 rounded-md cursor-pointer">
+                <li className="px-2 mx-1 mb-3 text-red-500 bg-red-100 border border-red-100 cursor-pointer border-opacity-25 bg-opacity-25 rounded-md">
                   {number}
                 </li>
               )}

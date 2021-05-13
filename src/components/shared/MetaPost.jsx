@@ -7,9 +7,9 @@ export const MetaPost = ({ category, author, date }) => {
   return (
     <>
       <Category category={category} />
-      <div className="flex justify-between items-center my-4 text-sm">
+      <div className="flex items-center justify-between my-4 text-sm">
         <Avatar name={author.name} picture={author.icon.url} />
-        <div className="text-black-300 flex items-center">
+        <div className="flex items-center text-black-300">
           <CalendarIcon className="h-4 w-4 mr-0.5 inline" />
           <DateFormatter dateString={date} />
         </div>

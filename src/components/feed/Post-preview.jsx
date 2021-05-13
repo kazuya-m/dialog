@@ -14,11 +14,11 @@ export const PostPreview = ({ title, thumbnail, date, author, id, category }) =>
       </div>
       <Link as={`/posts/${id}`} href="/posts/[id]">
         <a className="hover:text-black-300">
-          <h2 className="text-lg mb-2 ml-1 leading-snug font-semibold hover:text-black-300">{title}</h2>
+          <h2 className="mb-2 ml-1 text-lg font-semibold leading-snug hover:text-black-300">{title}</h2>
         </a>
       </Link>
       <MetaPost category={category} author={author} date={date} />
-      {/* <p className="text-base text-black-400 leading-relaxed mb-4">{excerpt}</p> */}
+      {/* <p className="mb-4 text-base leading-relaxed text-black-400">{excerpt}</p> */}
     </div>
   )
 }

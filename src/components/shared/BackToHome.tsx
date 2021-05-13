@@ -6,7 +6,7 @@ export const BackToHome = () => {
     <>
       <Link href="/">
         <a className="flex items-center cursor-pointer">
-          <ChevronLeftIcon className="w-4 h-4 inline" />
+          <ChevronLeftIcon className="inline w-4 h-4" />
           <p>ホームに戻る</p>
         </a>
       </Link>
