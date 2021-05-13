@@ -7,16 +7,17 @@ import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome.tsx'
 import { Container } from 'src/components/shared/Container'
 import { SectionSeparator } from 'src/components/utils/separator/Section-separator'
+import { getPostById } from 'src/lib/microcms/api'
 
 export const Post = ({ post }) => {
-  // const router = useRouter()
-  // if (!router.isFallback && !post?.slug) {
-  //   return <ErrorPage statusCode={404} />
-  // }
+  const router = useRouter()
+  if (!router.isFallback && !post?.id) {
+    return <ErrorPage statusCode={404} />
+  }
   return (
     <Layout>
       <Container>
-        <article className="mt-10 max-w-2xl mx-auto">
+        <article className="mt-10 mb-6 max-w-2xl mx-auto">
           <Head>
             <title>{post.title}</title>
             {/* <meta property="og:image" content={post.ogImage.url} /> */}
@@ -30,9 +31,10 @@ export const Post = ({ post }) => {
           />
           <SectionSeparator />
           <PostBody content={post.body} />
-          <SectionSeparator />
         </article>
-        <BackToHome />
+        <div className="mb-6 flex justify-center">
+          <BackToHome />
+        </div>
       </Container>
     </Layout>
   )
@@ -40,39 +42,20 @@ export const Post = ({ post }) => {
 
 export const getStaticProps = async (context) => {
   const { id } = context.params
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  }
-  const data = await fetch(`${process.env.GET_POSTS_API}/${id}`, key)
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
+
+  const postData = await getPostById(id)
+
   return {
     props: {
-      post: data,
-      revalidate: 60,
+      post: postData,
     },
+    revalidate: 60 * 5,
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export const getStaticPaths = async () => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  }
-  const posts = await fetch(process.env.GET_POSTS_API, key)
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
-  const paths = posts.contents.map((content) => {
-    return `/posts/${content.id}`
-  })
-  return { paths, fallback: false }
+  return { paths: [], fallback: 'blocking' }
 }
 
 export default Post

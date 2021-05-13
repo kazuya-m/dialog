@@ -1,13 +1,19 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
+import ErrorPage from 'next/error'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { LatestPosts } from 'src/components/feed/Latest-posts'
 import { Intro } from 'src/components/intro'
 import { Pagination } from 'src/components/Pagination'
 import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
-import { PER_PAGE } from 'src/constants'
+import { getPageAmount } from 'src/lib/calculator/page-amount'
+import { getAllCategories, getAllPosts, getPostsByCategoryPerPage } from 'src/lib/microcms/api'
 
-export const CategoryPage = ({ posts, totalCount, categoryName }) => {
+export const CategoryPage = ({ posts, totalCount }) => {
+  const router = useRouter()
+  if (!router.isFallback && !posts[0]) {
+    return <ErrorPage statusCode={404} />
+  }
   return (
     <>
       <Layout>
@@ -15,9 +21,9 @@ export const CategoryPage = ({ posts, totalCount, categoryName }) => {
           <title>DIALOG</title>
         </Head>
         <Container>
-          <Intro>{categoryName}</Intro>
+          <Intro>{posts[0].category.name}</Intro>
           <LatestPosts posts={posts} />
-          <Pagination totalCount={totalCount} />
+          <Pagination path={posts[0].category.id} totalCount={totalCount} />
         </Container>
       </Layout>
     </>
@@ -27,69 +33,20 @@ export const CategoryPage = ({ posts, totalCount, categoryName }) => {
 // データを取得
 export const getStaticProps = async (context) => {
   const { categoryId, number } = context.params
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  }
 
-  const data = await fetch(`${process.env.GET_POSTS_API}?filters=category[equals]${categoryId}`, key)
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
-  console.log(data)
+  const posts = await getPostsByCategoryPerPage(categoryId, number)
+
   return {
     props: {
-      posts: data.contents,
-      totalCount: data.totalCount,
-      categoryName: data.contents[0].category.name,
+      posts: posts.contents,
+      totalCount: posts.totalCount,
     },
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export const getStaticPaths = async () => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  }
-  const categories = await fetch(process.env.GET_CATEGORIES_API, key)
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
-  const categoryIds = categories.contents.map((content) => {
-    return { categoryId: content.id }
-  })
-
-  const allPosts = await fetch(`${process.env.GET_POSTS_API}`, key)
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
-
-  const range = (start, end) => {
-    return [...Array(end - start + 1)].map((_, i) => {
-      return start + i
-    })
-  }
-
-  const categoryPages = range(1, Math.ceil(allPosts.totalCount / PER_PAGE)).map((number) => {
-    return { pageNumber: number }
-  })
-
-  const paths = categoryIds
-    .map(({ categoryId }) => {
-      return categoryPages.map(({ pageNumber }) => {
-        return { params: { categoryId, number: pageNumber.toString() } }
-      })
-    })
-    .flat()
-
-  return { paths, fallback: false }
+  return { paths: [], fallback: 'blocking' }
 }
 
 export default CategoryPage

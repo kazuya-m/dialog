@@ -9,11 +9,11 @@
 
 .markdown ul,
 .markdown ol {
-  @apply list-disc px-10 py-3 bg-gray-50 text-sm;
+  @apply list-disc px-8 text-base;
 }
 
 .markdown blockquote {
-  @apply border-l-2 border-black-200 ml-3 px-3 py-1 text-base text-black-300 italic;
+  @apply border-l-2 border-black-200 ml-3 px-3 py-1 text-base text-black-400;
 }
 
 .markdown h2 {
@@ -22,4 +22,8 @@
 
 .markdown strong {
   @apply border-b-2　border-red-500 border-opacity-90;
+}
+
+.markdown a {
+  @apply　text-red-500 text-opacity-70;
 }

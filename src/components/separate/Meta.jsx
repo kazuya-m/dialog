@@ -1,7 +1,5 @@
 import Head from 'next/head'
 
-import { HOME_OG_IMAGE_URL } from '../../lib/constants'
-
 export const Meta = () => {
   return (
     <Head>
@@ -19,7 +17,7 @@ export const Meta = () => {
         name="description"
         content="浦和レッズを戦術的に分析・解説し、少し深く応援するブログメディア。サポーター間での対話のきっかけとなるコンテンツを、文章や音声で配信しています。"
       />
-      <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+      {/* <meta property="og:image" content={} /> */}
     </Head>
   )
 }

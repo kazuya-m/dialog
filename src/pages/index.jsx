@@ -4,6 +4,7 @@ import { Intro } from 'src/components/intro'
 import { Pagination } from 'src/components/Pagination'
 import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
+import { getPostsPerPage } from 'src/lib/microcms/api'
 
 export const Index = ({ posts, totalCount }) => {
   return (
@@ -15,7 +16,7 @@ export const Index = ({ posts, totalCount }) => {
         <Container>
           <Intro>LATEST ARTICLE</Intro>
           <LatestPosts posts={posts} />
-          <Pagination totalCount={totalCount} />
+          <Pagination path="page" totalCount={totalCount} />
         </Container>
       </Layout>
     </>
@@ -23,21 +24,13 @@ export const Index = ({ posts, totalCount }) => {
 }
 
 export const getStaticProps = async () => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  }
-  const posts = await fetch(`${process.env.GET_POSTS_API}?offset=0&limit=5`, key)
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
+  const posts = await getPostsPerPage('0')
   return {
     props: {
       posts: posts.contents,
       totalCount: posts.totalCount,
     },
+    revalidate: 60,
   }
 }
 export default Index
