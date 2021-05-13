@@ -10,7 +10,7 @@ export const LatestPosts = ({ posts }) => {
               key={post.id}
               title={post.title}
               thumbnail={post.thumbnail}
-              date={post.createdAt}
+              date={post.publishedAt}
               author={post.author}
               id={post.id}
               category={post.category}
