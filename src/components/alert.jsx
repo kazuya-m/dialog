@@ -12,7 +12,7 @@ export const Alert = ({ preview }) => {
       })}
     >
       <Container>
-        <div className="py-2 text-center text-sm">
+        <div className="py-2 text-sm text-center">
           {preview ? (
             <>
               This page is a preview.{' '}

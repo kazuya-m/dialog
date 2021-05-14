@@ -1,6 +1,6 @@
 export const PostTitle = ({ children }) => {
   return (
-    <h1 className="text-xl md:text-3xl font-bold tracking-normal leading-tight md:leading-relaxed my-2 text-left md:text-left">
+    <h1 className="my-2 text-xl font-bold leading-tight tracking-normal text-left md:text-3xl md:leading-relaxed md:text-left">
       {children}
     </h1>
   )
