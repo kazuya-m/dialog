@@ -6,8 +6,7 @@ import { Intro } from 'src/components/intro'
 import { Pagination } from 'src/components/Pagination'
 import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
-import { getPageAmount } from 'src/lib/calculator/page-amount'
-import { getAllCategories, getAllPosts, getPostsByCategoryPerPage } from 'src/lib/microcms/api'
+import { getPostsByCategoryPerPage } from 'src/lib/microcms/api'
 
 export const CategoryPage = ({ posts, totalCount }) => {
   const router = useRouter()

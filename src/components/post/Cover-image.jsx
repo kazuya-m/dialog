@@ -1,9 +1,8 @@
 import cn from 'classnames'
 import Image from 'next/image'
-import Link from 'next/link'
 
 export const CoverImage = ({ title, src, id, height, width }) => {
-  const image = (
+  return (
     <Image
       src={src}
       alt={`Cover Image for ${title}`}
@@ -14,16 +13,5 @@ export const CoverImage = ({ title, src, id, height, width }) => {
       width={width}
       height={height}
     />
-  )
-  return (
-    <div className="sm:mx-0">
-      {id ? (
-        <Link as={`/posts/${id}`} href="/posts/[id]">
-          <a aria-label={title}>{image}</a>
-        </Link>
-      ) : (
-        image
-      )}
-    </div>
   )
 }
