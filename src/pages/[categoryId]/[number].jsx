@@ -21,7 +21,7 @@ export const CategoryPage = ({ posts, totalCount }) => {
           <title>DIALOG</title>
         </Head>
         <Container>
-          <Intro>{posts[0].category.name}</Intro>
+          <Intro headline={posts[0].category.name} />
           <LatestPosts posts={posts} />
           <Pagination path={posts[0].category.id} totalCount={totalCount} />
         </Container>
