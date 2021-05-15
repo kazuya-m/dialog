@@ -37,7 +37,7 @@
     "src/components/post/Hero-post.jsx",
     "src/components/shared/header.jsx",
     "src/components/shared/footer.jsx",
-    "src/components/utils/date/date-formatter.jsx",
+    "src/components/utils/date/DateFormatter.jsx",
     "src/components/post/cover-image.jsx",
     "src/components/shared/container.jsx",
     "src/components/shared/Avatar.jsx",
