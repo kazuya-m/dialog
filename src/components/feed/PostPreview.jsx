@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { CoverImage } from 'src/components/post/Cover-image'
+import { CoverImage } from 'src/components/post/CoverImage'
 import { MetaPost } from 'src/components/shared/MetaPost'
 
 export const PostPreview = ({ title, thumbnail, date, author, id, category }) => {

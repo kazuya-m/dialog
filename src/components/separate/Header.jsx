@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { SectionSeparator } from '../utils/separator/Section-separator'
+import { SectionSeparator } from '../utils/separator/SectionSeparator'
 
 export const Header = () => {
   return (

@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import { LatestPosts } from 'src/components/feed/Latest-posts'
-import { Intro } from 'src/components/intro'
-import { Pagination } from 'src/components/Pagination'
+import { PostsFeed } from 'src/components/feed/PostsFeed'
 import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
+import { Intro } from 'src/components/shared/Intro'
+import { Pagination } from 'src/components/shared/Pagination'
 import { getPostsPerPage } from 'src/lib/microcms/api'
 
 export const Index = ({ posts, totalCount }) => {
@@ -15,7 +15,7 @@ export const Index = ({ posts, totalCount }) => {
         </Head>
         <Container>
           <Intro headline="LATEST ARTICLES" />
-          <LatestPosts posts={posts} />
+          <PostsFeed posts={posts} />
           <Pagination path="page" totalCount={totalCount} />
         </Container>
       </Layout>

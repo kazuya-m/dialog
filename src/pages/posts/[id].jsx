@@ -1,12 +1,12 @@
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { PostBody } from 'src/components/post/Post-body'
-import { PostHeader } from 'src/components/post/Post-header'
+import { PostBody } from 'src/components/post/PostBody'
+import { PostHeader } from 'src/components/post/PostHeader'
 import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome.tsx'
 import { Container } from 'src/components/shared/Container'
-import { SectionSeparator } from 'src/components/utils/separator/Section-separator'
+import { SectionSeparator } from 'src/components/utils/separator/SectionSeparator'
 import { getPostById } from 'src/lib/microcms/api'
 
 export const Post = ({ post }) => {

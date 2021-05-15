@@ -24,6 +24,6 @@
   @apply border-b-2 border-red-500 border-opacity-90;
 }
 
-.markdown > a {
-  @apply text-red-500 text-opacity-70;
+.markdown div p a {
+  @apply text-red-500 text-opacity-70 !important;
 }

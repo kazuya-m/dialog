@@ -16,35 +16,5 @@
     "baseUrl": "."
   },
   "exclude": ["node_modules", ".next", "out"],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "src/pages/index.jsx",
-    "src/pages/_document.jsx",
-    "src/pages/_app.jsx",
-    "src/pages/posts/[id].jsx",
-    "src/components/utils/separator/section-separator.jsx",
-    "src/components/post/post-title.jsx",
-    "src/components/Post-preview.jsx",
-    "src/components/post-header.jsx",
-    "src/components/post/post-body.jsx",
-    "src/components/feed/Latest-posts.jsx",
-    "src/components/shared/meta.jsx",
-    "src/components/shared/layout.jsx",
-    "src/components/intro.jsx",
-    "src/components/post/Hero-post.jsx",
-    "src/components/shared/header.jsx",
-    "src/components/shared/footer.jsx",
-    "src/components/utils/date/DateFormatter.jsx",
-    "src/components/post/cover-image.jsx",
-    "src/components/shared/container.jsx",
-    "src/components/shared/Avatar.jsx",
-    "src/components/alert.jsx",
-    "src/lib/markdownToHtml.jsx",
-    "src/lib/constants.jsx",
-    "src/lib/api.jsx",
-    "src/components/shared/MetaPost.jsx"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
 }
