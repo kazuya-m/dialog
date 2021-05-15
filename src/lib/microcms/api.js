@@ -40,7 +40,7 @@ export const getPostsPerPage = async (offset) => {
   // 0(index)の場合は0
   const offsetPerPage = offsetNumber !== 0 ? (offsetNumber - 1) * PER_PAGE : 0
   const posts = await fetch(
-    `${process.env.GET_POSTS_API}?offset=${offsetPerPage}&limit=${PER_PAGE}&fields=${postPreviewFields}`,
+    `${process.env.GET_POSTS_API}?orders=-publishedAt&offset=${offsetPerPage}&limit=${PER_PAGE}&fields=${postPreviewFields}`,
     key,
   )
     .then((res) => {
@@ -84,7 +84,7 @@ export const getPostsByCategoryPerPage = async (categoryId, offset) => {
   const offsetNumber = Number(offset)
   const offsetPerPage = offsetNumber !== 0 ? (offsetNumber - 1) * PER_PAGE : 0
   const posts = await fetch(
-    `${process.env.GET_POSTS_API}?filters=category[equals]${categoryId}&offset=${offsetPerPage}&limit=${PER_PAGE}&fields=${postPreviewFields}`,
+    `${process.env.GET_POSTS_API}?orders=-publishedAt&filters=category[equals]${categoryId}&offset=${offsetPerPage}&limit=${PER_PAGE}&fields=${postPreviewFields}`,
     key,
   )
     .then((res) => {
