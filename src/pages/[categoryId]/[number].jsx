@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { PostsFeed } from 'src/components/feed/PostsFeed'
 import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
-import { Intro } from 'src/components/shared/intro'
+import { Intro } from 'src/components/shared/Intro'
 import { Pagination } from 'src/components/shared/Pagination'
 import { getPostsByCategoryPerPage } from 'src/lib/microcms/api'
 
