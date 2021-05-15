@@ -1,9 +1,9 @@
-import { PostPreview } from './Post-preview'
+import { PostPreview } from 'src/components/feed/PostPreview'
 
-export const LatestPosts = ({ posts }) => {
+export const PostsFeed = ({ posts }) => {
   return (
     <section>
-      <div className="mb-10 grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-10 md:gap-y-32">
+      <div className="grid grid-cols-1 mb-10 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-10 md:gap-y-32">
         {posts.map((post) => {
           return (
             <PostPreview

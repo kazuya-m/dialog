@@ -1,11 +1,11 @@
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { LatestPosts } from 'src/components/feed/Latest-posts'
-import { Intro } from 'src/components/intro'
-import { Pagination } from 'src/components/Pagination'
+import { PostsFeed } from 'src/components/feed/PostsFeed'
 import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
+import { Intro } from 'src/components/shared/Intro'
+import { Pagination } from 'src/components/shared/Pagination'
 import { getPostsByCategoryPerPage } from 'src/lib/microcms/api'
 
 export const CategoryPage = ({ posts, totalCount }) => {
@@ -21,7 +21,7 @@ export const CategoryPage = ({ posts, totalCount }) => {
         </Head>
         <Container>
           <Intro headline={posts[0].category.name} />
-          <LatestPosts posts={posts} />
+          <PostsFeed posts={posts} />
           <Pagination path={posts[0].category.id} totalCount={totalCount} />
         </Container>
       </Layout>
