@@ -1,5 +1,5 @@
 .markdown {
-  @apply text-base md:text-lg leading-relaxed tracking-wide;
+  @apply text-base leading-relaxed tracking-wide md:text-lg;
 }
 
 .markdown p,
@@ -9,21 +9,21 @@
 
 .markdown ul,
 .markdown ol {
-  @apply list-disc px-8 text-base;
+  @apply px-8 text-base list-disc;
 }
 
 .markdown blockquote {
-  @apply border-l-2 border-black-200 ml-3 px-3 py-1 text-base text-black-400;
+  @apply px-3 py-1 ml-3 text-base border-l-2 border-black-200 text-black-400;
 }
 
 .markdown h2 {
-  @apply text-lg md:text-xl mt-10 mb-4 pb-1 leading-snug font-bold border-b-2 border-red-500;
+  @apply pb-1 mt-10 mb-4 text-lg font-bold leading-snug border-b-2 border-red-500 md:text-xl;
 }
 
 .markdown strong {
-  @apply border-b-2　border-red-500 border-opacity-90;
+  @apply border-b-2 border-red-500 border-opacity-90;
 }
 
-.markdown a {
-  @apply　text-red-500 text-opacity-70;
+.markdown > a {
+  @apply text-red-500 text-opacity-70;
 }
