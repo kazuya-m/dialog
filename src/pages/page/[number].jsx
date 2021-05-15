@@ -2,7 +2,6 @@ import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { LatestPosts } from 'src/components/feed/Latest-posts'
-import { Intro } from 'src/components/intro'
 import { Pagination } from 'src/components/Pagination'
 import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
@@ -20,7 +19,6 @@ export const PostPage = ({ posts, totalCount }) => {
           <title>DIALOG</title>
         </Head>
         <Container>
-          <Intro />
           <LatestPosts posts={posts} />
           <Pagination path="page" totalCount={totalCount} />
         </Container>

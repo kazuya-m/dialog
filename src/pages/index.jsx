@@ -14,7 +14,7 @@ export const Index = ({ posts, totalCount }) => {
           <title>DIALOG</title>
         </Head>
         <Container>
-          <Intro>LATEST ARTICLE</Intro>
+          <Intro headline="LATEST ARTICLES" />
           <LatestPosts posts={posts} />
           <Pagination path="page" totalCount={totalCount} />
         </Container>
