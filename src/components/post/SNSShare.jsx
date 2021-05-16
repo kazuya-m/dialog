@@ -10,7 +10,7 @@ export const SNSShare = ({ title, accountName }) => {
   const iconStyles = { color: '3D3D3D', fontSize: '1.4em', opacity: 0.8 }
   return (
     <>
-      <ul className="flex justify-center">
+      <ul className="flex justify-center mt-10">
         <li>
           <TwitterShareButton title={`${title} | ${accountName}\n`} url={`${BASE_URL}${path}`}>
             test
