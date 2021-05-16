@@ -34,7 +34,7 @@ export const Post = ({ post }) => {
           <SectionSeparator />
           <div className="mt-4 md:my-6">
             aaaaaaaaaaa
-            <SNSShare title={post.title} accountName={post.author.accountName} />
+            {/* <SNSShare title={post.title} accountName={post.author.accountName} /> */}
           </div>
           <PostBody content={post.body} />
         </article>
