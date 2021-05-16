@@ -32,7 +32,7 @@ export const Post = ({ post }) => {
             category={post.category}
           />
           <SectionSeparator />
-          <div className="block mt-4">
+          <div className="mt-4 mb-16">
             <SNSShare title={post.title} accountName={post.author.accountName} />
           </div>
           <PostBody content={post.body} />
