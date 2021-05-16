@@ -6,7 +6,7 @@ const key = {
 }
 
 // 記事詳細取得時に取得する要素
-const postFields = 'id,publishedAt,title,body,category.id,category.name,author.name,author.icon.url,thumbnail.url'
+const postFields = 'id,publishedAt,title,body,category.id,category.name,author,thumbnail.url'
 // 記事一覧取得時に取得する要素
 const postPreviewFields = 'id,publishedAt,title,category.id,category.name,author.name,author.icon.url,thumbnail.url'
 
