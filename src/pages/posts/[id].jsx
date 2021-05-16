@@ -1,8 +1,10 @@
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { PostsFeed } from 'src/components/feed/PostsFeed'
 import { PostBody } from 'src/components/post/PostBody'
 import { PostHeader } from 'src/components/post/PostHeader'
+import { SNSShare } from 'src/components/post/SNSShare'
 import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome.tsx'
 import { Container } from 'src/components/shared/Container'
@@ -14,6 +16,7 @@ export const Post = ({ post }) => {
   if (!router.isFallback && !post?.id) {
     return <ErrorPage statusCode={404} />
   }
+
   return (
     <Layout>
       <Container>
@@ -30,8 +33,14 @@ export const Post = ({ post }) => {
             category={post.category}
           />
           <SectionSeparator />
+          <div className="mt-4 md:my-6">
+            <SNSShare title={post.title} accountName={post.author.accountName} />
+          </div>
           <PostBody content={post.body} />
         </article>
+        <div className="mt-8 mb-2">
+          <SNSShare title={post.title} accountName={post.author.accountName} />
+        </div>
         <div className="flex justify-center mb-6">
           <BackToHome />
         </div>
