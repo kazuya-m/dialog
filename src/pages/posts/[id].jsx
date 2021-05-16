@@ -32,12 +32,12 @@ export const Post = ({ post }) => {
             category={post.category}
           />
           <SectionSeparator />
-          <div className="my-16 bg-black-default">
+          <div className="mt-6">
             <SNSShare title={post.title} accountName={post.author.accountName} />
           </div>
           <PostBody content={post.body} />
         </article>
-        <div className="block mt-8 mb-2">
+        <div className="mt-8 mb-2">
           <SNSShare title={post.title} accountName={post.author.accountName} />
         </div>
         <div className="flex justify-center mb-6">

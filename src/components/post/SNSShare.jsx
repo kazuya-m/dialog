@@ -6,33 +6,25 @@ import { BASE_URL } from 'src/constants'
 export const SNSShare = ({ title, accountName }) => {
   const router = useRouter()
   const path = router.asPath
-  const classes = 'p-3'
+  const classes = 'p-3 mx-2'
   const iconStyles = { color: '3D3D3D', fontSize: '1.4em', opacity: 0.8 }
   return (
-    <div>
-      <ul className="flex justify-end mt-10">
-        <li>
-          <TwitterShareButton title={`${title} | ${accountName}\n`} url={`${BASE_URL}${path}`}>
-            <span className={classes}>
-              <FaTwitter style={iconStyles} />
-            </span>
-          </TwitterShareButton>
-        </li>
-        <li>
-          <LineShareButton title={`${title}`} url={`${BASE_URL}${path}`}>
-            <span className={classes}>
-              <FaLine style={iconStyles} />
-            </span>
-          </LineShareButton>
-        </li>
-        <li>
-          <PocketShareButton title={`${title}`} url={`${BASE_URL}${path}`}>
-            <span className={classes}>
-              <FaGetPocket style={iconStyles} />
-            </span>
-          </PocketShareButton>
-        </li>
-      </ul>
-    </div>
+    <ul className="flex justify-center">
+      <li className={classes}>
+        <TwitterShareButton title={`${title} | ${accountName}\n`} url={`${BASE_URL}${path}`}>
+          <FaTwitter style={iconStyles} />
+        </TwitterShareButton>
+      </li>
+      <li className={classes}>
+        <LineShareButton title={`${title}`} url={`${BASE_URL}${path}`}>
+          <FaLine style={iconStyles} />
+        </LineShareButton>
+      </li>
+      <li className={classes}>
+        <PocketShareButton title={`${title}`} url={`${BASE_URL}${path}`}>
+          <FaGetPocket style={iconStyles} />
+        </PocketShareButton>
+      </li>
+    </ul>
   )
 }
