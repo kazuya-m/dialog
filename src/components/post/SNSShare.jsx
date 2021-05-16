@@ -6,25 +6,21 @@ import { BASE_URL } from 'src/constants'
 export const SNSShare = ({ title, accountName }) => {
   const router = useRouter()
   const path = router.asPath
-  const classes = 'block mx-3 p-3'
+
   const iconStyles = { color: '3D3D3D', fontSize: '1.4em', opacity: 0.8 }
   return (
     <>
       <ul className="flex justify-center">
         <li>
           <TwitterShareButton title={`${title} | ${accountName}\n`} url={`${BASE_URL}${path}`}>
-            <span className={classes}>
-              test
-              {/* <FaTwitter color="3D3D3D" /> */}
-            </span>
+            test
+            {/* <FaTwitter color="3D3D3D" /> */}
           </TwitterShareButton>
         </li>
         <li>
           <LineShareButton title={`${title}`} url={`${BASE_URL}${path}`}>
-            <span className={classes}>
-              test
-              {/* <FaLine color="3d3d3d" /> */}
-            </span>
+            test
+            {/* <FaLine color="3d3d3d" /> */}
           </LineShareButton>
         </li>
         {/* <li>
