@@ -13,7 +13,7 @@ export const SNSShare = ({ title, accountName }) => {
       <li>
         <TwitterShareButton title={`${title} | ${accountName}\n`} url={`${BASE_URL}${path}`}>
           <span className={classes}>
-            <FaTwitter style={iconStyles} />
+            <FaTwitter color="3D3D3D" />
           </span>
         </TwitterShareButton>
       </li>
