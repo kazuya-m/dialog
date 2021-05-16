@@ -20,17 +20,17 @@ export const SNSShare = ({ title, accountName }) => {
       <li>
         <LineShareButton title={`${title}`} url={`${BASE_URL}${path}`}>
           <span className={classes}>
-            <FaLine style={iconStyles} />
+            <FaLine color="3d3d3d" />
           </span>
         </LineShareButton>
       </li>
-      <li>
+      {/* <li>
         <PocketShareButton title={`${title}`} url={`${BASE_URL}${path}`}>
           <span className={classes}>
             <FaGetPocket style={iconStyles} />
           </span>
         </PocketShareButton>
-      </li>
+      </li> */}
     </ul>
   )
 }
