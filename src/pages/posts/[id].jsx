@@ -8,10 +8,12 @@ import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome.tsx'
 import { Container } from 'src/components/shared/Container'
 import { SectionSeparator } from 'src/components/utils/separator/SectionSeparator'
+import { BASE_URL } from 'src/constants'
 import { getPostById } from 'src/lib/microcms/api'
 
 export const Post = ({ post }) => {
   const router = useRouter()
+  const path = router.asPath
   if (!router.isFallback && !post?.id) {
     return <ErrorPage statusCode={404} />
   }
@@ -22,7 +24,11 @@ export const Post = ({ post }) => {
         <article className="max-w-2xl mx-auto mt-10 mb-6">
           <Head>
             <title>{post.title}</title>
-            {/* <meta property="og:image" content={post.ogImage.url} /> */}
+            <meta property="og:title" content={post.title} />
+            <meta property="og:image" content={post.thumbnail.url} />
+            <meta property="og:url" content={`${BASE_URL}/${path}`} />
+            <meta property="og:description" content="something" />
+            <meta name="twitter:card" content="summary_large_image" />
           </Head>
           <PostHeader
             title={post.title}
