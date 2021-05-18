@@ -1,7 +1,6 @@
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { PostsFeed } from 'src/components/feed/PostsFeed'
 import { PostBody } from 'src/components/post/PostBody'
 import { PostHeader } from 'src/components/post/PostHeader'
 import { SNSShare } from 'src/components/post/SNSShare'
@@ -33,7 +32,7 @@ export const Post = ({ post }) => {
             category={post.category}
           />
           <SectionSeparator />
-          <div className="mt-4 md:my-6">
+          <div className="mt-6">
             <SNSShare title={post.title} accountName={post.author.accountName} />
           </div>
           <PostBody content={post.body} />

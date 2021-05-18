@@ -1,10 +1,10 @@
-import markdownStyles from 'src/styles/markdown-styles.module.css'
+import postStyles from 'src/styles/post-body.module.css'
 
 export const PostBody = ({ content }) => {
   return (
     <>
       {/* eslint-disable-next-line react/no-danger */}
-      <div className={markdownStyles.markdown} dangerouslySetInnerHTML={{ __html: content }} />
+      <div className={postStyles.post} dangerouslySetInnerHTML={{ __html: content }} />
     </>
   )
 }
