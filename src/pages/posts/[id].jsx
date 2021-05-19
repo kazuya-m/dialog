@@ -1,6 +1,7 @@
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import { PostBody } from 'src/components/post/PostBody'
 import { PostHeader } from 'src/components/post/PostHeader'
 import { SNSShare } from 'src/components/post/SNSShare'
@@ -13,6 +14,14 @@ import { getPostById } from 'src/lib/microcms/api'
 
 export const Post = ({ post }) => {
   const router = useRouter()
+  // Twitter埋め込みスクリプトの反映
+  useEffect(() => {
+    const s = document.createElement('script')
+    s.setAttribute('src', 'https://platform.twitter.com/widgets.js')
+    s.setAttribute('async', 'true')
+    document.head.appendChild(s)
+  }, [])
+  // 404ハンドリング
   const path = router.asPath
   if (!router.isFallback && !post?.id) {
     return <ErrorPage statusCode={404} />
@@ -20,17 +29,17 @@ export const Post = ({ post }) => {
 
   return (
     <Layout>
+      <Head>
+        <title>{post.title}</title>
+        <meta property="og:title" content={post.title} />
+        <meta property="og:image" content={post.thumbnail.url} />
+        <meta property="og:url" content={`${BASE_URL}/${path}`} />
+        <meta property="og:description" content={post.body} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content={`@${post.author.accountName}`} />
+      </Head>
       <Container>
         <article className="max-w-2xl mx-auto mt-10 mb-6">
-          <Head>
-            <title>{post.title}</title>
-            <meta property="og:title" content={post.title} />
-            <meta property="og:image" content={post.thumbnail.url} />
-            <meta property="og:url" content={`${BASE_URL}/${path}`} />
-            <meta property="og:description" content={post.body} />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:creator" content={post.author.accountName} />
-          </Head>
           <PostHeader
             title={post.title}
             thumbnail={post.thumbnail}
