@@ -27,7 +27,7 @@ export const Post = ({ post }) => {
             <meta property="og:title" content={post.title} />
             <meta property="og:image" content={post.thumbnail.url} />
             <meta property="og:url" content={`${BASE_URL}/${path}`} />
-            <meta property="og:description" content="something" />
+            <meta property="og:description" content={post.body} />
             <meta name="twitter:card" content="summary_large_image" />
           </Head>
           <PostHeader
