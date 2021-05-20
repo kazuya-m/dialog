@@ -1,6 +1,5 @@
 /* eslint-disable react/no-danger */
 import Document, { Head, Html, Main, NextScript } from 'next/document'
-import { Meta } from 'src/components/separate/Meta'
 import { existsGaId, GA_ID } from 'src/lib/gtag'
 
 class MyDocument extends Document {
@@ -26,7 +25,6 @@ class MyDocument extends Document {
               />
             </>
           )}
-          <Meta />
         </Head>
         <body>
           <Main />
