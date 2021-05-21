@@ -4,6 +4,7 @@ import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
 import { Intro } from 'src/components/shared/Intro'
 import { Pagination } from 'src/components/shared/Pagination'
+import { BASE_URL } from 'src/constants'
 import { getPostsPerPage } from 'src/lib/microcms/api'
 
 export const Index = ({ posts, totalCount }) => {
@@ -12,6 +13,11 @@ export const Index = ({ posts, totalCount }) => {
       <Layout>
         <Head>
           <title>DIALOG</title>
+          <meta property="og:title" content="DIALOG - 浦和レッズをもっとサポートするためのコミュニティ" />
+          <meta property="og:image" content="/assets/dialog-logo.png" />
+          <meta property="og:url" content={`${BASE_URL}`} />
+          <meta property="og:description" content="test" />
+          <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <Container>
           <Intro headline="LATEST ARTICLES" />
