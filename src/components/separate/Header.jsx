@@ -12,7 +12,7 @@ export const Header = () => {
               <p className="text-4xl font-bold md:text-5xl xl:text-6xl">
                 <span className="text-red-500">DIA</span>LOG
               </p>
-              <p className="text-xs text-black-300 mt-0.5">浦和レッズを戦術的に考えるメディア</p>
+              <p className="text-xs text-black-300 mt-0.5">浦和レッズをもっとサポートするためのコミュニティ</p>
             </a>
           </Link>
         </div>
