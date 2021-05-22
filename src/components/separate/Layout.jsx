@@ -6,7 +6,7 @@ import { Header } from './Header'
 
 export const Layout = ({ uniqueMeta, children }) => {
   const router = useRouter()
-  const card = `https://${process.env.VERCEL_URL ?? 'localhost:3000'}/assets/dialog-logo_1200x630.png`
+  const card = `https://${process.env.NEXT_PUBLIC_VERCEL_URL ?? 'localhost:3000'}/assets/dialog-logo_1200x630.png`
 
   const meta = {
     title: uniqueMeta?.title
