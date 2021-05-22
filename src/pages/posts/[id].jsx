@@ -22,22 +22,16 @@ export const Post = ({ post }) => {
     document.head.appendChild(s)
   }, [])
   // 404ハンドリング
-  const path = router.asPath
   if (!router.isFallback && !post?.id) {
     return <ErrorPage statusCode={404} />
   }
 
+  const meta = {
+    title: post.title,
+    cardImage: post.thumbnail.url,
+  }
   return (
-    <Layout>
-      <Head>
-        <title>{post.title}</title>
-        <meta property="og:title" content={post.title} />
-        <meta property="og:image" content={post.thumbnail.url} />
-        <meta property="og:url" content={`${BASE_URL}/${path}`} />
-        <meta property="og:description" content={post.body} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content={`@${post.author.accountName}`} />
-      </Head>
+    <Layout uniqueMeta={meta}>
       <Container>
         <article className="max-w-2xl mx-auto mt-10 mb-6">
           <PostHeader

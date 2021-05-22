@@ -11,14 +11,6 @@ export const Index = ({ posts, totalCount }) => {
   return (
     <>
       <Layout>
-        <Head>
-          <title>DIALOG</title>
-          <meta property="og:title" content="DIALOG - 浦和レッズをもっとサポートするためのコミュニティ" />
-          <meta property="og:image" content="/assets/dialog-logo_1200x630.png" />
-          <meta property="og:url" content={`${BASE_URL}`} />
-          <meta property="og:description" content="test" />
-          <meta name="twitter:card" content="summary_large_image" />
-        </Head>
         <Container>
           <Intro headline="LATEST ARTICLES" />
           <PostsFeed posts={posts} />
