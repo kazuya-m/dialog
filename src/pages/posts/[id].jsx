@@ -1,5 +1,4 @@
 import ErrorPage from 'next/error'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { PostBody } from 'src/components/post/PostBody'
@@ -9,7 +8,6 @@ import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome.tsx'
 import { Container } from 'src/components/shared/Container'
 import { SectionSeparator } from 'src/components/utils/separator/SectionSeparator'
-import { BASE_URL } from 'src/constants'
 import { getPostById } from 'src/lib/microcms/api'
 
 export const Post = ({ post }) => {
