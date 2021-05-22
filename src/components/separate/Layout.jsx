@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { BASE_URL } from 'src/constants'
 
 import { Footer } from './Footer'
 import { Header } from './Header'
