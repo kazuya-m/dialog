@@ -13,8 +13,10 @@ export const Layout = ({ uniqueMeta, children }) => {
     title: uniqueMeta?.title
       ? `${uniqueMeta.title} | DIALOG`
       : 'DIALOG | 浦和レッズをもっとサポートするためのコミュニティ',
-    description: '浦和レッズをもっとサポートするために。戦術を理解してクラブやチームと目線を合わせるためのコミュニティ',
     cardImage: uniqueMeta?.cardImage ?? card,
+    description:
+      uniqueMeta?.description ??
+      '浦和レッズをもっとサポートするために。戦術を理解してクラブやチームと目線を合わせるためのコミュニティ',
     ...uniqueMeta,
   }
   return (
