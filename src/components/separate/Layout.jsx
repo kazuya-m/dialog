@@ -38,7 +38,7 @@ export const Layout = ({ uniqueMeta, children }) => {
         <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content={meta.description} name="description" />
-        <meta property="og:url" content={`${BASE_URL}/${router.asPath}`} />
+        <meta property="og:url" content={`https://${process.env.VERCEL_URL}/${router.asPath}`} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={meta.title} />
         <meta property="og:description" content={meta.description} />
