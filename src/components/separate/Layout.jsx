@@ -7,13 +7,14 @@ import { Header } from './Header'
 
 export const Layout = ({ uniqueMeta, children }) => {
   const router = useRouter()
+  const card = `https://${process.env.VERCEL_URL ?? 'localhost:3000'}/assets/dialog-logo_1200x630.png`
 
   const meta = {
     title: uniqueMeta?.title
       ? `${uniqueMeta.title} | DIALOG`
       : 'DIALOG | 浦和レッズをもっとサポートするためのコミュニティ',
     description: '浦和レッズをもっとサポートするために。戦術を理解してクラブやチームと目線を合わせるためのコミュニティ',
-    cardImage: `https://${process.env.VERCEL_URL ?? 'localhost:3000'}/assets/dialog-logo_1200x630.png`,
+    cardImage: uniqueMeta?.cardImage ?? card,
     ...uniqueMeta,
   }
   return (
