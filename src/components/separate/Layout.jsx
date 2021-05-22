@@ -1,18 +1,18 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { BASE_URL } from 'src/constants'
 
 import { Footer } from './Footer'
 import { Header } from './Header'
 
 export const Layout = ({ uniqueMeta, children }) => {
   const router = useRouter()
-  const card = `https://${process.env.NEXT_PUBLIC_VERCEL_URL ?? 'localhost:3000'}/assets/dialog-logo_1200x630.png`
 
   const meta = {
     title: uniqueMeta?.title
       ? `${uniqueMeta.title} | DIALOG`
       : 'DIALOG | 浦和レッズをもっとサポートするためのコミュニティ',
-    cardImage: uniqueMeta?.cardImage ?? card,
+    cardImage: uniqueMeta?.cardImage ?? `${BASE_URL}/assets/dialog-logo_1200x630.png`,
     description:
       uniqueMeta?.description ??
       '浦和レッズをもっとサポートするために。戦術を理解してクラブやチームと目線を合わせるためのコミュニティ',
@@ -37,7 +37,7 @@ export const Layout = ({ uniqueMeta, children }) => {
         <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content={meta.description} name="description" />
-        <meta property="og:url" content={`https://${process.env.VERCEL_URL}/${router.asPath}`} />
+        <meta property="og:url" content={`${BASE_URL}}/${router.asPath}`} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={meta.title} />
         <meta property="og:description" content={meta.description} />
