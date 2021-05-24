@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 import Document, { Head, Html, Main, NextScript } from 'next/document'
-import { existsGaId, GA_ID } from 'src/lib/gtag'
+import { existsGaId, existsUaId, GA_ID, UA_ID } from 'src/lib/gtag'
 
 class MyDocument extends Document {
   render() {
@@ -18,6 +18,9 @@ class MyDocument extends Document {
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
                   gtag('config', '${GA_ID}', {
+                    page_path: window.location.pathname,
+                  });
+                  gtag('config', '${UA_ID}', {
                     page_path: window.location.pathname,
                   });
                 `,
