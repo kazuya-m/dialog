@@ -8,7 +8,7 @@ import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome.tsx'
 import { Container } from 'src/components/shared/Container'
 import { SectionSeparator } from 'src/components/utils/separator/SectionSeparator'
-import { getPostById } from 'src/lib/microcms/api'
+import { getPostById } from 'src/lib/microcms/client'
 
 export const Post = ({ post }) => {
   const router = useRouter()

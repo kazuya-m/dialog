@@ -6,7 +6,7 @@ import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
 import { Intro } from 'src/components/shared/Intro'
 import { Pagination } from 'src/components/shared/Pagination'
-import { getPostsPerPage } from 'src/lib/microcms/api'
+import { getPostsPerPage } from 'src/lib/microcms/client'
 
 export const PostPage = ({ posts, totalCount }) => {
   const router = useRouter()

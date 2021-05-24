@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+import { createClient } from 'microcms-js-sdk'
 import { PER_PAGE } from 'src/constants'
 
-const key = {
-  headers: { 'X-API-KEY': process.env.API_KEY },
-}
+const client = createClient({
+  serviceDomain: process.env.MICROCMS_DOMAIN,
+  apiKey: process.env.API_KEY,
+})
 
 // 記事詳細取得時に取得する要素
 const postFields = 'id,publishedAt,title,body,category.id,category.name,category.thumbnail,author,thumbnail.url'
@@ -11,28 +13,29 @@ const postFields = 'id,publishedAt,title,body,category.id,category.name,category
 const postPreviewFields =
   'id,publishedAt,title,category.id,category.name,category.thumbnail,author.name,author.icon.url,thumbnail.url'
 
-// 全記事の数を取得
-export const getAllPostsTotalCount = async () => {
-  const response = await fetch(`${process.env.GET_POSTS_API}?limit=0&fields=totalCount`, key)
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
-  return response.totalCount
-}
-
 // 記事詳細を取得
 export const getPostById = async (id) => {
-  const post = await fetch(`${process.env.GET_POSTS_API}/${id}?fields=${postFields}&depth=1`, key)
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
+  const post = await client.get({
+    endpoint: 'posts',
+    contentId: id,
+    queries: {
+      fields: postFields,
+      depth: 1,
+    },
+  })
   return post
+}
+
+// 全記事の数を取得
+export const getAllPostsTotalCount = async () => {
+  const response = await client.get({
+    endpoint: 'posts',
+    queries: {
+      limit: 0,
+      fields: 'totalCount',
+    },
+  })
+  return response.totalCount
 }
 
 // 1ページ分の記事を取得
@@ -40,31 +43,29 @@ export const getPostsPerPage = async (offset) => {
   const offsetNumber = Number(offset)
   // 0(index)の場合は0
   const offsetPerPage = offsetNumber !== 0 ? (offsetNumber - 1) * PER_PAGE : 0
-  const posts = await fetch(
-    `${process.env.GET_POSTS_API}?orders=-publishedAt&offset=${offsetPerPage}&limit=${PER_PAGE}&fields=${postPreviewFields}`,
-    key,
-  )
-    .then((res) => {
-      return res.json()
-    })
-    .catch((err) => {
-      return null
-    })
+  const posts = await client.get({
+    endpoint: 'posts',
+    queries: {
+      orders: '-publishedAt',
+      offset: offsetPerPage,
+      limit: PER_PAGE,
+      fields: postPreviewFields,
+    },
+  })
+
   return posts
 }
 
 // カテゴリ毎の全記事数を取得
 export const getPostsCountCategories = async (categoryId) => {
-  const response = await fetch(
-    `${process.env.GET_POSTS_API}?filters=category=${categoryId}&limit=0&fields=totalCount`,
-    key,
-  )
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
+  const response = await client.get({
+    endpoint: 'categories',
+    queries: {
+      filters: `category[equals]${categoryId}`,
+      limit: 0,
+      fields: 'totalCount',
+    },
+  })
   return response.totalCount
 }
 
@@ -84,16 +85,16 @@ export const getPostsCountCategories = async (categoryId) => {
 export const getPostsByCategoryPerPage = async (categoryId, offset) => {
   const offsetNumber = Number(offset)
   const offsetPerPage = offsetNumber !== 0 ? (offsetNumber - 1) * PER_PAGE : 0
-  const posts = await fetch(
-    `${process.env.GET_POSTS_API}?orders=-publishedAt&filters=category[equals]${categoryId}&offset=${offsetPerPage}&limit=${PER_PAGE}&fields=${postPreviewFields}`,
-    key,
-  )
-    .then((res) => {
-      return res.json()
-    })
-    .catch(() => {
-      return null
-    })
 
+  const posts = await client.get({
+    endpoint: 'posts',
+    queries: {
+      orders: '-publishedAt',
+      filters: `category[equals]${categoryId}`,
+      offset: offsetPerPage,
+      limit: PER_PAGE,
+      fields: postPreviewFields,
+    },
+  })
   return posts
 }
