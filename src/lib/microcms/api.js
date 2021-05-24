@@ -6,9 +6,10 @@ const key = {
 }
 
 // 記事詳細取得時に取得する要素
-const postFields = 'id,publishedAt,title,body,category.id,category.name,author,thumbnail.url'
+const postFields = 'id,publishedAt,title,body,category.id,category.name,category.thumbnail,author,thumbnail.url'
 // 記事一覧取得時に取得する要素
-const postPreviewFields = 'id,publishedAt,title,category.id,category.name,author.name,author.icon.url,thumbnail.url'
+const postPreviewFields =
+  'id,publishedAt,title,category.id,category.name,category.thumbnail,author.name,author.icon.url,thumbnail.url'
 
 // 全記事の数を取得
 export const getAllPostsTotalCount = async () => {

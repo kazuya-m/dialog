@@ -9,7 +9,7 @@ export const PostsFeed = ({ posts }) => {
             <PostPreview
               key={post.id}
               title={post.title}
-              thumbnail={post.thumbnail}
+              thumbnail={post.thumbnail ?? post.category.thumbnail}
               date={post.publishedAt}
               author={post.author}
               id={post.id}

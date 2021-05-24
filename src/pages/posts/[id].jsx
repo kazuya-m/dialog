@@ -26,7 +26,7 @@ export const Post = ({ post }) => {
 
   const meta = {
     title: post.title,
-    cardImage: post.thumbnail.url,
+    cardImage: post.thumbnail?.url ?? post.category.thumbnail.url,
   }
   return (
     <Layout uniqueMeta={meta}>
@@ -34,7 +34,7 @@ export const Post = ({ post }) => {
         <article className="max-w-2xl mx-auto mt-10 mb-6">
           <PostHeader
             title={post.title}
-            thumbnail={post.thumbnail}
+            thumbnail={post.thumbnail ?? post.category.thumbnail}
             date={post.publishedAt}
             author={post.author}
             category={post.category}
@@ -60,7 +60,6 @@ export const getStaticProps = async (context) => {
   const { id } = context.params
 
   const postData = await getPostById(id)
-
   return {
     props: {
       post: postData,
