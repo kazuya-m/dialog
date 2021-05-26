@@ -7,9 +7,12 @@
   @apply my-6;
 }
 
-.post ul,
-.post ol {
+.post ul {
   @apply px-8 text-base list-disc;
+}
+
+.post ol {
+  @apply px-8 text-base list-decimal;
 }
 
 .post blockquote {
@@ -22,8 +25,4 @@
 
 .post strong {
   @apply border-b-2 border-red-500 border-opacity-90;
-}
-
-.post a {
-  @apply text-red-500 border;
 }
