@@ -10,7 +10,8 @@ export const Header = () => {
           <Link href="/">
             <a className="cursor-pointer">
               <p className="text-4xl font-bold md:text-5xl xl:text-6xl">
-                <span className="text-red-500">DIA</span>LOG
+                <span className="text-red-500">DIA</span>
+                <span className="text-black-900">LOG</span>
               </p>
               <p className="text-xs text-black-300 mt-0.5">浦和レッズをもっとサポートするためのコミュニティ</p>
             </a>
