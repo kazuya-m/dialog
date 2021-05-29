@@ -42,7 +42,7 @@ export const Post = ({ post }) => {
           />
           <SectionSeparator />
           <div className="mt-6">
-            <SNSShare title={post.title} accountName={post.author.accountName} />
+            <SNSShare title={post.title} accountName={post.author.accountName} withMessage={false} />
           </div>
           {post.author.id !== 'maybe_km' && (
             <div className="mt-6 mb-12">
@@ -51,6 +51,7 @@ export const Post = ({ post }) => {
           )}
           <PostBody content={post.body} />
         </article>
+        <SectionSeparator />
         <div className="mt-8 mb-2">
           <SNSShare title={post.title} accountName={post.author.accountName} />
         </div>
