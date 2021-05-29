@@ -9,7 +9,7 @@ const client = createClient({
 
 // 記事詳細取得時に取得する要素
 const postFields =
-  'id,publishedAt,title,body,category.id,category.name,category.thumbnail.url,author.id,author.name,author.icon.url,author.accountName,author.url,thumbnail.url'
+  'id,publishedAt,title,body,category.id,category.name,category.thumbnail.url,author.id,author.name,author.icon.url,author.accountName,author.url,author.resource,thumbnail.url'
 // 記事一覧取得時に取得する要素
 const postPreviewFields =
   'id,publishedAt,title,category.id,category.name,category.thumbnail.url,author.name,author.icon.url,thumbnail.url'
