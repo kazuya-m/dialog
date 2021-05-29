@@ -8,10 +8,11 @@ const client = createClient({
 })
 
 // 記事詳細取得時に取得する要素
-const postFields = 'id,publishedAt,title,body,category,author,thumbnail'
+const postFields =
+  'id,publishedAt,title,body,category.id,category.name,category.thumbnail.url,author.id,author.name,author.icon.url,author.accountName,author.url,thumbnail.url'
 // 記事一覧取得時に取得する要素
 const postPreviewFields =
-  'id,publishedAt,title,category.id,category.name,category.thumbnail,author.name,author.icon.url,thumbnail.url'
+  'id,publishedAt,title,category.id,category.name,category.thumbnail.url,author.name,author.icon.url,thumbnail.url'
 
 // 記事詳細を取得
 export const getPostById = async (id) => {
@@ -69,18 +70,6 @@ export const getPostsCountCategories = async (categoryId) => {
   })
   return response.totalCount
 }
-
-// 全てのカテゴリを取得(idと名称) カテゴリ一覧ページ実装時に使う
-// export const getAllCategories = async () => {
-//   const allCategories = fetch(`${process.env.GET_CATEGORIES_API}?limit=100&?fields=id,name`, key)
-//     .then((res) => {
-//       return res.json()
-//     })
-//     .catch(() => {
-//       return null
-//     })
-//   return allCategories
-// }
 
 // カテゴリ毎かつ1ページ分の記事を取得
 export const getPostsByCategoryPerPage = async (categoryId, offset) => {
