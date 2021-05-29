@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import { FaGetPocket, FaLine, FaTwitter } from 'react-icons/fa'
-import { LineShareButton, PocketShareButton, TwitterShareButton } from 'react-share'
+import { FaLine, FaTwitter } from 'react-icons/fa'
+import { LineShareButton, TwitterShareButton } from 'react-share'
 import { BASE_URL } from 'src/constants'
 
 export const SNSShare = ({ title, accountName }) => {
