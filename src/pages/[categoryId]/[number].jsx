@@ -1,5 +1,4 @@
 import ErrorPage from 'next/error'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { PostsFeed } from 'src/components/feed/PostsFeed'
 import { Layout } from 'src/components/separate/Layout'
@@ -14,18 +13,13 @@ export const CategoryPage = ({ posts, totalCount }) => {
     return <ErrorPage statusCode={404} />
   }
   return (
-    <>
-      <Layout>
-        <Head>
-          <title>DIALOG</title>
-        </Head>
-        <Container>
-          <Intro headline={posts[0].category.name} />
-          <PostsFeed posts={posts} />
-          <Pagination path={posts[0].category.id} totalCount={totalCount} />
-        </Container>
-      </Layout>
-    </>
+    <Layout>
+      <Container>
+        <Intro headline={posts[0].category.name} />
+        <PostsFeed posts={posts} />
+        <Pagination path={posts[0].category.id} totalCount={totalCount} />
+      </Container>
+    </Layout>
   )
 }
 

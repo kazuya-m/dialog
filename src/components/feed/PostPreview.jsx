@@ -18,7 +18,6 @@ export const PostPreview = ({ title, thumbnail, date, author, id, category }) =>
         </a>
       </Link>
       <MetaPost category={category} author={author} date={date} />
-      {/* <p className="mb-4 text-base leading-relaxed text-black-400">{excerpt}</p> */}
     </div>
   )
 }
