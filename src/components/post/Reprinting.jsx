@@ -14,7 +14,7 @@ export const Reprinting = ({ author }) => {
         <p>
           掲載元の
           <a href={author.url} target="_blank" rel="noreferrer" className="text-red-400 text-opacity-90">
-            {author.name === '96' ? 'ブログ' : 'note'}
+            {author.resource}
           </a>
           や
           <a
