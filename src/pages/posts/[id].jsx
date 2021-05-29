@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { PostBody } from 'src/components/post/PostBody'
 import { PostHeader } from 'src/components/post/PostHeader'
+import { Reprinting } from 'src/components/post/Reprinting'
 import { SNSShare } from 'src/components/post/SNSShare'
 import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome.tsx'
@@ -41,10 +42,16 @@ export const Post = ({ post }) => {
           />
           <SectionSeparator />
           <div className="mt-6">
-            <SNSShare title={post.title} accountName={post.author.accountName} />
+            <SNSShare title={post.title} accountName={post.author.accountName} withMessage={false} />
           </div>
+          {post.author.id !== 'maybe_km' && (
+            <div className="mt-6 mb-12">
+              <Reprinting author={post.author} />
+            </div>
+          )}
           <PostBody content={post.body} />
         </article>
+        <SectionSeparator />
         <div className="mt-8 mb-2">
           <SNSShare title={post.title} accountName={post.author.accountName} />
         </div>

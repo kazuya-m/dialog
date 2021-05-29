@@ -8,7 +8,7 @@ const client = createClient({
 })
 
 // 記事詳細取得時に取得する要素
-const postFields = 'id,publishedAt,title,body,category.id,category.name,category.thumbnail,author,thumbnail.url'
+const postFields = 'id,publishedAt,title,body,category,author,thumbnail'
 // 記事一覧取得時に取得する要素
 const postPreviewFields =
   'id,publishedAt,title,category.id,category.name,category.thumbnail,author.name,author.icon.url,thumbnail.url'
@@ -22,6 +22,7 @@ export const getPostById = async (id) => {
       fields: postFields,
       depth: 1,
     },
+    useGlobalDraftKey: false,
   })
   return post
 }
