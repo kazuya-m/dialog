@@ -38,7 +38,7 @@ export const getStaticProps = async (context) => {
       posts: data.contents,
       totalCount: data.totalCount,
     },
-    revalidate: 60 * 60,
+    revalidate: 60 * 5,
   }
 }
 

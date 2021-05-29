@@ -15,7 +15,7 @@ export const Layout = ({ uniqueMeta, children }) => {
     cardImage: uniqueMeta?.cardImage ?? `${BASE_URL}/assets/dialog-logo_1200x630.png`,
     description:
       uniqueMeta?.description ??
-      '浦和レッズをもっとサポートするために。クラブやチームと目線を合わせるためのコミュニティ',
+      'DIALOG | 浦和レッズをもっとサポートするために。クラブやチームと目線を合わせるためのコミュニティ。',
     ...uniqueMeta,
   }
   return (
