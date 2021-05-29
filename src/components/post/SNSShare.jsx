@@ -11,7 +11,7 @@ export const SNSShare = ({ title, accountName }) => {
   return (
     <ul className="flex justify-center">
       <li className={classes}>
-        <TwitterShareButton title={`${title} | ${accountName}\n`} url={`${BASE_URL}${path}`}>
+        <TwitterShareButton title={`${title} | @${accountName}\n`} url={`${BASE_URL}${path}`}>
           <FaTwitter style={iconStyles} />
         </TwitterShareButton>
       </li>
@@ -19,11 +19,6 @@ export const SNSShare = ({ title, accountName }) => {
         <LineShareButton title={`${title}`} url={`${BASE_URL}${path}`}>
           <FaLine style={iconStyles} />
         </LineShareButton>
-      </li>
-      <li className={classes}>
-        <PocketShareButton title={`${title}`} url={`${BASE_URL}${path}`}>
-          <FaGetPocket style={iconStyles} />
-        </PocketShareButton>
       </li>
     </ul>
   )
