@@ -2,7 +2,7 @@ import postStyles from 'src/styles/post-body.module.css'
 
 export const PostBody = ({ content }) => {
   return (
-    <>
+    <div>
       {/* eslint-disable-next-line react/no-danger */}
       <div className={`${postStyles.post} post-body`} dangerouslySetInnerHTML={{ __html: content }} />
       <style jsx global>{`
@@ -11,6 +11,6 @@ export const PostBody = ({ content }) => {
           opacity: 0.8;
         }
       `}</style>
-    </>
+    </div>
   )
 }

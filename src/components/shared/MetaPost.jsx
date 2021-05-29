@@ -5,7 +5,7 @@ import { DateDistanceFormatter } from 'src/components/utils/date/DateDistanceFor
 
 export const MetaPost = ({ category, author, date }) => {
   return (
-    <>
+    <div>
       <Category category={category} />
       <div className="flex items-center justify-between my-4 text-sm">
         <Avatar name={author.name} picture={author.icon.url} />
@@ -14,6 +14,6 @@ export const MetaPost = ({ category, author, date }) => {
           <DateDistanceFormatter dateString={date} />
         </div>
       </div>
-    </>
+    </div>
   )
 }
