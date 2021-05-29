@@ -22,3 +22,7 @@
 .post h2 {
   @apply pb-1 mt-10 mb-4 text-lg font-bold leading-snug border-b-2 border-red-500 md:text-xl;
 }
+
+.post u {
+  @apply no-underline border-b-2 border-red-500;
+}
