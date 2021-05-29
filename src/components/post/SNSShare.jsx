@@ -6,7 +6,6 @@ import { BASE_URL } from 'src/constants'
 export const SNSShare = ({ title, accountName, withMessage = true }) => {
   const router = useRouter()
   const path = router.asPath
-  const ulClasses = withMessage ? 'justify-center' : 'justify-end'
   const iconStyles = { color: '3D3D3D', fontSize: '1.4em', opacity: 0.8 }
   return (
     <div>
@@ -16,7 +15,7 @@ export const SNSShare = ({ title, accountName, withMessage = true }) => {
           <p>ぜひシェアしてください</p>
         </div>
       )}
-      <ul className={`flex ${ulClasses}`}>
+      <ul className={`flex ${withMessage ? 'justify-center' : 'justify-end'}`}>
         <li className="px-2 py-3">
           <TwitterShareButton title={`${title} | @${accountName}\n`} url={`${BASE_URL}${path}`}>
             <FaTwitter style={iconStyles} />
