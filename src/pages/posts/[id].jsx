@@ -65,8 +65,9 @@ export const Post = ({ post }) => {
 
 export const getStaticProps = async (context) => {
   const { id } = context.params
+  const draftKey = context.previewData?.draftKey
 
-  const postData = await getPostById(id)
+  const postData = await getPostById(id, draftKey)
   return {
     props: {
       post: postData,
