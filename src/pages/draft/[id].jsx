@@ -50,8 +50,8 @@ export const Draft = ({ post }) => {
             </div>
           )}
           <PostBody content={post.body} />
+          <SectionSeparator />
         </article>
-        <SectionSeparator />
         <div className="mt-8 mb-2">
           <SNSShare title={post.title} accountName={post.author.accountName} />
         </div>
