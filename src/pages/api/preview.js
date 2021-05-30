@@ -8,11 +8,15 @@ export default async (req, res) => {
     return res.status(404).end()
   }
 
-  const content = await client.get({
-    endpoint: 'posts',
-    contentId: req.query.id,
-    draftKey: req.query.draftKey,
-  })
+  const content = await client
+    .get({
+      endpoint: 'posts',
+      contentId: req.query.id,
+      queries: { draftKey: req.query.draftKey },
+    })
+    .catch((e) => {
+      return console.log(e)
+    })
 
   // const content = await fetch(
   //   `https://${process.env.MICROCMS_DOMAIN}.microcms.io/api/v1/posts/${req.query.id}?fields=id&draftKey=${req.query.draftKey}`,
@@ -33,6 +37,6 @@ export default async (req, res) => {
     id: content.id,
     draftKey: req.query.draftKey,
   })
-  res.writeHead(307, { Location: `/${content.id}` })
+  res.writeHead(307, { Location: `/draft/${content.id}` })
   res.end('Preview mode enabled')
 }

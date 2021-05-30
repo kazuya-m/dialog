@@ -18,14 +18,28 @@ const postDraftFields =
   'id,title,body,category.id,category.name,category.thumbnail.url,author.id,author.name,author.icon.url,author.accountName,author.url,author.resource,thumbnail.url'
 
 // 記事詳細を取得
-export const getPostById = async (id, draftKey) => {
+export const getPostById = async (id) => {
   const post = await client.get({
     endpoint: 'posts',
     contentId: id,
     queries: {
-      fields: draftKey ? postDraftFields : postFields,
+      fields: postFields,
       depth: 1,
-      draftKey: draftKey ?? null,
+    },
+    useGlobalDraftKey: false,
+  })
+  return post
+}
+
+// 記事下書きを取得
+export const getDraftPostById = async (id, draftKey) => {
+  const post = await client.get({
+    endpoint: 'posts',
+    contentId: id,
+    queries: {
+      fields: postDraftFields,
+      depth: 1,
+      draftKey,
     },
     useGlobalDraftKey: false,
   })

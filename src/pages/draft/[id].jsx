@@ -9,9 +9,9 @@ import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome.tsx'
 import { Container } from 'src/components/shared/Container'
 import { SectionSeparator } from 'src/components/utils/separator/SectionSeparator'
-import { getPostById } from 'src/lib/microcms/client'
+import { getDraftPostById, getPostById } from 'src/lib/microcms/client'
 
-export const Post = ({ post }) => {
+export const Draft = ({ post }) => {
   const router = useRouter()
   // Twitter埋め込みスクリプトの反映
   useEffect(() => {
@@ -36,7 +36,7 @@ export const Post = ({ post }) => {
           <PostHeader
             title={post.title}
             thumbnail={post.thumbnail ?? post.category.thumbnail}
-            date={post.publishedAt}
+            date="2020-04-23T14:32:38.163Z"
             author={post.author}
             category={post.category}
           />
@@ -65,13 +65,13 @@ export const Post = ({ post }) => {
 
 export const getStaticProps = async (context) => {
   const { id } = context.params
+  const { draftKey } = context.previewData
 
-  const postData = await getPostById(id)
+  const postData = await getDraftPostById(id, draftKey)
   return {
     props: {
       post: postData,
     },
-    revalidate: 60 * 5,
   }
 }
 
@@ -80,4 +80,4 @@ export const getStaticPaths = async () => {
   return { paths: [], fallback: 'blocking' }
 }
 
-export default Post
+export default Draft
