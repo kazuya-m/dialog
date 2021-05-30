@@ -2,7 +2,7 @@
 import { createClient } from 'microcms-js-sdk'
 import { PER_PAGE } from 'src/constants'
 
-const client = createClient({
+export const client = createClient({
   serviceDomain: process.env.MICROCMS_DOMAIN,
   apiKey: process.env.API_KEY,
 })
