@@ -3,7 +3,7 @@
 import fetch from 'node-fetch'
 import { client } from 'src/lib/microcms/client'
 
-export const Preview = async (req, res) => {
+export default async (req, res) => {
   if (!req.query.id) {
     return res.status(404).end()
   }
