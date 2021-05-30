@@ -9,7 +9,7 @@ import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome.tsx'
 import { Container } from 'src/components/shared/Container'
 import { SectionSeparator } from 'src/components/utils/separator/SectionSeparator'
-import { getDraftPostById, getPostById } from 'src/lib/microcms/client'
+import { getDraftPostById } from 'src/lib/microcms/client'
 
 export const Draft = ({ post }) => {
   const router = useRouter()
@@ -66,7 +66,6 @@ export const Draft = ({ post }) => {
 export const getStaticProps = async (context) => {
   const { id } = context.params
   const { draftKey } = context.previewData
-
   const postData = await getDraftPostById(id, draftKey)
   return {
     props: {

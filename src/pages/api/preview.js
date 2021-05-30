@@ -7,16 +7,11 @@ export default async (req, res) => {
   if (!req.query.id) {
     return res.status(404).end()
   }
-
-  const content = await client
-    .get({
-      endpoint: 'posts',
-      contentId: req.query.id,
-      queries: { draftKey: req.query.draftKey },
-    })
-    .catch((e) => {
-      return console.log(e)
-    })
+  const content = await client.get({
+    endpoint: 'posts',
+    contentId: req.query.id,
+    queries: { draftKey: req.query.draftKey },
+  })
 
   // const content = await fetch(
   //   `https://${process.env.MICROCMS_DOMAIN}.microcms.io/api/v1/posts/${req.query.id}?fields=id&draftKey=${req.query.draftKey}`,
