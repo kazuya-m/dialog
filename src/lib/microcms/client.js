@@ -13,9 +13,9 @@ const postFields =
 // 記事一覧取得時に取得する要素
 const postPreviewFields =
   'id,publishedAt,title,category.id,category.name,category.thumbnail.url,author.name,author.icon.url,thumbnail.url'
-// 記事一覧取得時に取得する要素
+// 下書き取得時に取得する要素
 const postDraftFields =
-  'id,title,category.id,category.name,category.thumbnail.url,author.name,author.icon.url,thumbnail.url'
+  'id,title,body,category.id,category.name,category.thumbnail.url,author.id,author.name,author.icon.url,author.accountName,author.url,author.resource,thumbnail.url'
 
 // 記事詳細を取得
 export const getPostById = async (id, draftKey) => {
