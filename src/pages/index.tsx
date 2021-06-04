@@ -4,8 +4,16 @@ import { Container } from 'src/components/shared/Container'
 import { Intro } from 'src/components/shared/Intro'
 import { Pagination } from 'src/components/shared/Pagination'
 import { getPostsPerPage } from 'src/lib/microcms/client'
+import type { VFC } from 'react'
+import type { Posts } from 'src/models/posts'
+import { GetStaticProps } from 'next'
 
-export const Index = ({ posts, totalCount }) => {
+type Props = {
+  posts: Array<Posts>
+  totalCount: number
+}
+
+export const Index: VFC<Props> = ({ posts, totalCount }) => {
   return (
     <Layout>
       <Container>
@@ -17,7 +25,7 @@ export const Index = ({ posts, totalCount }) => {
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const posts = await getPostsPerPage('0')
   return {
     props: {

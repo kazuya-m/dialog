@@ -1,17 +1,19 @@
 import '../styles/index.css'
+import type { AppProps } from 'next/app'
 
 import { useRouter } from 'next/dist/client/router'
 import { useEffect } from 'react'
 import { existsGaId, pageView } from 'src/lib/gtag'
 
-const App = ({ Component, pageProps }) => {
+const App = (props: AppProps) => {
   const router = useRouter()
   useEffect(() => {
     if (!existsGaId) {
       return
     }
 
-    const handleRouteChange = (path) => {
+    const handleRouteChange = (path: string) => {
+      console.log(path)
       pageView(path)
     }
 
@@ -23,7 +25,7 @@ const App = ({ Component, pageProps }) => {
   }, [router.events])
 
   // eslint-disable-next-line react/jsx-props-no-spreading
-  return <Component {...pageProps} />
+  return <props.Component {...props.pageProps} />
 }
 
 export default App

@@ -1,6 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-import fetch from 'node-fetch'
 import { client } from 'src/lib/microcms/client'
 
 export default async (req, res) => {
@@ -12,17 +9,6 @@ export default async (req, res) => {
     contentId: req.query.id,
     queries: { draftKey: req.query.draftKey },
   })
-
-  // const content = await fetch(
-  //   `https://${process.env.MICROCMS_DOMAIN}.microcms.io/api/v1/posts/${req.query.id}?fields=id&draftKey=${req.query.draftKey}`,
-  //   { headers: { 'X-API-KEY': process.env.API_KEY || '' } },
-  // )
-  //   .then((result) => {
-  //     return result.json()
-  //   })
-  //   .catch((error) => {
-  //     return null
-  //   })
 
   if (!content) {
     return res.status(401).json({ message: 'Invalid id' })

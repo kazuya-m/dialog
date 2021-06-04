@@ -1,7 +1,15 @@
 import { ExclamationCircleIcon } from '@heroicons/react/solid'
+import type { VFC } from 'react'
 import { TWITTER_URL } from 'src/constants'
 
-export const Reprinting = ({ author }) => {
+type Props = {
+  name: string
+  accountName: string
+  url: string
+  resource: string
+}
+
+export const Reprinting: VFC<Props> = ({ name, accountName, url, resource }) => {
   return (
     <div className="flex items-center px-4 py-6 bg-yellow-100 bg-opacity-70">
       <div className="w-20">
@@ -9,16 +17,16 @@ export const Reprinting = ({ author }) => {
       </div>
       <div className="text-sm leading-relaxed tracking-wide md:text-base">
         <p>
-          本記事は{author.name}さんがご自身の{author.resource}で連載中の記事になります。
+          本記事は{name}さんがご自身の{resource}で連載中の記事になります。
         </p>
         <p>
           掲載元の
-          <a href={author.url} target="_blank" rel="noreferrer" className="text-red-400 text-opacity-90">
-            {author.resource}
+          <a href={url} target="_blank" rel="noreferrer" className="text-red-400 text-opacity-90">
+            {resource}
           </a>
           や
           <a
-            href={`${TWITTER_URL}/${author.accountName}`}
+            href={`${TWITTER_URL}/${accountName}`}
             target="_blank"
             rel="noreferrer"
             className="text-red-400 text-opacity-90"

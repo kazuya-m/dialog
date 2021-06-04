@@ -1,14 +1,25 @@
 import Link from 'next/link'
 import { CoverImage } from 'src/components/post/CoverImage'
 import { MetaPost } from 'src/components/shared/MetaPost'
+import type { VFC } from 'react'
+import { Author, Category, Image } from 'src/models/posts'
 
-export const PostPreview = ({ title, thumbnail, date, author, id, category }) => {
+type Props = {
+  title: string
+  thumbnail: Image
+  date: string
+  author: Author
+  id: string
+  category: Category
+}
+
+export const PostPreview: VFC<Props> = ({ title, thumbnail, date, author, id, category }) => {
   return (
     <div>
       <div className="mb-4">
         <Link as={`/posts/${id}`} href="/posts/[id]">
           <a className="hover:text-black-300">
-            <CoverImage id={id} title={title} src={thumbnail.url} height={278} width={556} />
+            <CoverImage title={title} src={thumbnail.url} height={278} width={556} />
           </a>
         </Link>
       </div>
