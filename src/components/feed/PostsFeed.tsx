@@ -1,6 +1,13 @@
 import { PostPreview } from 'src/components/feed/PostPreview'
 
-export const PostsFeed = ({ posts }) => {
+import type { VFC } from 'react'
+import type { Posts } from 'src/models/posts'
+
+type Props = {
+  posts: Array<Posts>
+}
+
+export const PostsFeed: VFC<Props> = ({ posts }) => {
   return (
     <section>
       <div className="grid grid-cols-1 mb-10 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-10 md:gap-y-32">
@@ -14,7 +21,6 @@ export const PostsFeed = ({ posts }) => {
               author={post.author}
               id={post.id}
               category={post.category}
-              // excerpt={post.excerpt}
             />
           )
         })}

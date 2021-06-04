@@ -1,6 +1,11 @@
 import postStyles from 'src/styles/post-body.module.css'
+import type { VFC } from 'react'
 
-export const PostBody = ({ content }) => {
+type Props = {
+  content: string
+}
+
+export const PostBody: VFC<Props> = ({ content }) => {
   return (
     <div>
       {/* eslint-disable-next-line react/no-danger */}

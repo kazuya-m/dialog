@@ -6,12 +6,31 @@ import { PostHeader } from 'src/components/post/PostHeader'
 import { Reprinting } from 'src/components/post/Reprinting'
 import { SNSShare } from 'src/components/post/SNSShare'
 import { Layout } from 'src/components/separate/Layout'
-import { BackToHome } from 'src/components/shared/BackToHome.tsx'
+import { BackToHome } from 'src/components/shared/BackToHome'
 import { Container } from 'src/components/shared/Container'
 import { SectionSeparator } from 'src/components/utils/separator/SectionSeparator'
 import { getDraftPostById } from 'src/lib/microcms/client'
+import type { VFC } from 'react'
+import { PostDetail } from 'src/models/posts'
+import { ParsedUrlQuery } from 'node:querystring'
+import type { GetStaticPaths, GetStaticProps } from 'next'
 
-export const Draft = ({ post }) => {
+type Props = {
+  post: Omit<PostDetail, 'publishedAt'>
+}
+
+interface Params extends ParsedUrlQuery {
+  id: string
+}
+
+type PreviewData = {
+  previewData: {
+    id: string
+    draftKey: string
+  }
+}
+
+export const Draft: VFC<Props> = ({ post }) => {
   const router = useRouter()
   // Twitter埋め込みスクリプトの反映
   useEffect(() => {
@@ -44,9 +63,14 @@ export const Draft = ({ post }) => {
           <div className="mt-6">
             <SNSShare title={post.title} accountName={post.author.accountName} withMessage={false} />
           </div>
-          {post.author.id !== 'maybe_km' && (
+          {post?.author?.url && post?.author.resource && (
             <div className="mt-6 mb-12">
-              <Reprinting author={post.author} />
+              <Reprinting
+                name={post.author.name}
+                accountName={post.author.accountName}
+                url={post.author.url}
+                resource={post.author.resource}
+              />
             </div>
           )}
           <PostBody content={post.body} />
@@ -63,9 +87,9 @@ export const Draft = ({ post }) => {
   )
 }
 
-export const getStaticProps = async (context) => {
-  const { id } = context.params
-  const { draftKey } = context.previewData
+export const getStaticProps = async ({ previewData }: PreviewData) => {
+  const id = previewData?.id
+  const draftKey = previewData?.draftKey
   const postData = await getDraftPostById(id, draftKey)
   return {
     props: {

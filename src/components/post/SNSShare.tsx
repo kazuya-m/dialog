@@ -2,8 +2,15 @@ import { useRouter } from 'next/router'
 import { FaLine, FaTwitter } from 'react-icons/fa'
 import { LineShareButton, TwitterShareButton } from 'react-share'
 import { BASE_URL } from 'src/constants'
+import type { VFC } from 'react'
 
-export const SNSShare = ({ title, accountName, withMessage = true }) => {
+type Props = {
+  title: string
+  accountName: string
+  withMessage?: boolean
+}
+
+export const SNSShare: VFC<Props> = ({ title, accountName, withMessage = true }) => {
   const router = useRouter()
   const path = router.asPath
   const iconStyles = { color: '3D3D3D', fontSize: '1.4em', opacity: 0.8 }

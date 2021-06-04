@@ -1,6 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-import fetch from 'node-fetch'
 import { client } from 'src/lib/microcms/client'
 
 export default async (req, res) => {
