@@ -35,7 +35,6 @@ module.exports = {
     'import/no-default-export': 'error',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
-    'import/prefer-default-export': 0,
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unsafe-assignment': 'off',
@@ -43,6 +42,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-call': 'off',
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    'react/destructuring-assignment': ['error', 'never'],
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
@@ -53,7 +53,7 @@ module.exports = {
     ],
     'react/jsx-filename-extension': [0],
   },
-  overrides: [{ files: ['src/pages/**/*.{jsx,js}'], rules: { 'import/no-default-export': 'off' } }],
+  overrides: [{ files: ['src/pages/**/*.{jsx,js,tsx,ts}'], rules: { 'import/no-default-export': 'off' } }],
   settings: {
     'import/resolver': {
       typescript: { project: './' },

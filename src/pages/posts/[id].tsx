@@ -1,17 +1,24 @@
+import type { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
+import type { VFC } from 'react'
 import { useEffect } from 'react'
 import { PostBody } from 'src/components/post/PostBody'
 import { PostHeader } from 'src/components/post/PostHeader'
 import { Reprinting } from 'src/components/post/Reprinting'
 import { SNSShare } from 'src/components/post/SNSShare'
 import { Layout } from 'src/components/separate/Layout'
-import { BackToHome } from 'src/components/shared/BackToHome.tsx'
+import { BackToHome } from 'src/components/shared/BackToHome'
 import { Container } from 'src/components/shared/Container'
 import { SectionSeparator } from 'src/components/utils/separator/SectionSeparator'
 import { getPostById } from 'src/lib/microcms/client'
+import { PostDetail } from 'src/models/posts'
 
-export const Post = ({ post }) => {
+type Props = {
+  post: PostDetail
+}
+
+export const Post: VFC<Props> = ({ post }) => {
   const router = useRouter()
   // Twitter埋め込みスクリプトの反映
   useEffect(() => {
@@ -29,6 +36,7 @@ export const Post = ({ post }) => {
     title: post.title,
     cardImage: post.thumbnail?.url ?? post.category.thumbnail.url,
   }
+
   return (
     <Layout uniqueMeta={meta}>
       <Container>
@@ -44,9 +52,14 @@ export const Post = ({ post }) => {
           <div className="mt-6">
             <SNSShare title={post.title} accountName={post.author.accountName} withMessage={false} />
           </div>
-          {post.author.id !== 'maybe_km' && (
+          {post?.author?.url && post?.author.resource && (
             <div className="mt-6 mb-12">
-              <Reprinting author={post.author} />
+              <Reprinting
+                name={post.author.name}
+                accountName={post.author.accountName}
+                url={post.author.url}
+                resource={post.author.resource}
+              />
             </div>
           )}
           <PostBody content={post.body} />
@@ -63,9 +76,8 @@ export const Post = ({ post }) => {
   )
 }
 
-export const getStaticProps = async (context) => {
-  const { id } = context.params
-
+export const getStaticProps: GetStaticProps<Props, { id: string }> = async ({ params }) => {
+  const id = params?.id
   const postData = await getPostById(id)
   return {
     props: {
@@ -75,8 +87,7 @@ export const getStaticProps = async (context) => {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/require-await
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
   return { paths: [], fallback: 'blocking' }
 }
 

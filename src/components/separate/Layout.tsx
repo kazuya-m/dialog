@@ -1,11 +1,22 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { BASE_URL } from 'src/constants'
-
 import { Footer } from './Footer'
 import { Header } from './Header'
+import type { ReactNode, VFC } from 'react'
 
-export const Layout = ({ uniqueMeta, children }) => {
+type UniqueMeta = {
+  title: string
+  cardImage: string
+  description?: string
+}
+
+type Props = {
+  uniqueMeta?: UniqueMeta
+  children: ReactNode
+}
+
+export const Layout: VFC<Props> = ({ uniqueMeta, children }) => {
   const router = useRouter()
 
   const meta = {

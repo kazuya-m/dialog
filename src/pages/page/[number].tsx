@@ -6,8 +6,16 @@ import { Container } from 'src/components/shared/Container'
 import { Intro } from 'src/components/shared/Intro'
 import { Pagination } from 'src/components/shared/Pagination'
 import { getPostsPerPage } from 'src/lib/microcms/client'
+import type { GetStaticPaths, GetStaticProps } from 'next'
+import type { VFC } from 'react'
+import type { Posts } from 'src/models/posts'
 
-export const PostPage = ({ posts, totalCount }) => {
+type Props = {
+  posts: Array<Posts>
+  totalCount: number
+}
+
+export const PostPage: VFC<Props> = ({ posts, totalCount }) => {
   const router = useRouter()
   if (!router.isFallback && !posts[0]) {
     return <ErrorPage statusCode={404} />
@@ -23,9 +31,9 @@ export const PostPage = ({ posts, totalCount }) => {
   )
 }
 
-export const getStaticProps = async (context) => {
-  const { number } = context.params
-  const data = await getPostsPerPage(number)
+export const getStaticProps: GetStaticProps<Props, { number: string }> = async ({ params }) => {
+  const pageNumber = params
+  const data = await getPostsPerPage(pageNumber)
 
   return {
     props: {
@@ -36,7 +44,7 @@ export const getStaticProps = async (context) => {
   }
 }
 
-export const getStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths<{ number: string }> = async () => {
   return { paths: [], fallback: 'blocking' }
 }
 

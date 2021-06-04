@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { createClient } from 'microcms-js-sdk'
 import { PER_PAGE } from 'src/constants'
 

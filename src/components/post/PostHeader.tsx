@@ -1,8 +1,18 @@
 import { CoverImage } from 'src/components/post/CoverImage'
 import { PostTitle } from 'src/components/post/PostTitle'
 import { MetaPost } from 'src/components/shared/MetaPost'
+import type { VFC } from 'react'
+import { Author, Category, Image } from 'src/models/posts'
 
-export const PostHeader = ({ title, thumbnail, date, author, category }) => {
+type Props = {
+  title: string
+  thumbnail: Image
+  date: string
+  author: Author
+  category: Category
+}
+
+export const PostHeader: VFC<Props> = ({ title, thumbnail, date, author, category }) => {
   return (
     <div>
       <div className="mb-4">
