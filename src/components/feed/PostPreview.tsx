@@ -1,7 +1,7 @@
 import Link from 'next/link'
+import type { VFC } from 'react'
 import { CoverImage } from 'src/components/post/CoverImage'
 import { MetaPost } from 'src/components/shared/MetaPost'
-import type { VFC } from 'react'
 import { Author, Category, Image } from 'src/models/posts'
 
 type Props = {

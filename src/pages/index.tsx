@@ -1,12 +1,12 @@
+import { GetStaticProps } from 'next'
+import type { VFC } from 'react'
 import { PostsFeed } from 'src/components/feed/PostsFeed'
 import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
 import { Intro } from 'src/components/shared/Intro'
 import { Pagination } from 'src/components/shared/Pagination'
 import { getPostsPerPage } from 'src/lib/microcms/client'
-import type { VFC } from 'react'
 import type { Posts } from 'src/models/posts'
-import { GetStaticProps } from 'next'
 
 type Props = {
   posts: Array<Posts>

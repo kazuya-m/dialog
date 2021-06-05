@@ -1,8 +1,8 @@
 import { CalendarIcon } from '@heroicons/react/outline'
+import type { VFC } from 'react'
 import { Avatar } from 'src/components/shared/Avatar'
 import { CategoryInfo } from 'src/components/shared/CategoryInfo'
 import { DateDistanceFormatter } from 'src/components/utils/date/DateDistanceFormatter'
-import type { VFC } from 'react'
 import { Author, Category } from 'src/models/posts'
 
 type Props = {

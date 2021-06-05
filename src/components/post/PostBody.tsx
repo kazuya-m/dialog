@@ -1,5 +1,5 @@
-import postStyles from 'src/styles/post-body.module.css'
 import type { VFC } from 'react'
+import postStyles from 'src/styles/post-body.module.css'
 
 type Props = {
   content: string

@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
+import type { VFC } from 'react'
 import { FaLine, FaTwitter } from 'react-icons/fa'
 import { LineShareButton, TwitterShareButton } from 'react-share'
 import { BASE_URL } from 'src/constants'
-import type { VFC } from 'react'
 
 type Props = {
   title: string

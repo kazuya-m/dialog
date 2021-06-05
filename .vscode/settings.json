@@ -7,16 +7,9 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-  "cSpell.words": [
-    "gtag",
-    "heroicons",
-    "microcms",
-    "semibold"
-  ],
+  "eslint.validate": ["json", "javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "cSpell.words": ["gtag", "heroicons", "microcms", "semibold"],
   "css.validate": false,
   "javascript.preferences.importModuleSpecifier": "non-relative",
-  "cSpell.ignoreWords": [
-    "browserconfig",
-    "msapplication"
-  ]
+  "cSpell.ignoreWords": ["browserconfig", "msapplication"]
 }

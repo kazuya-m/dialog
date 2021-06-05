@@ -1,7 +1,7 @@
+import type { VFC } from 'react'
 import { CoverImage } from 'src/components/post/CoverImage'
 import { PostTitle } from 'src/components/post/PostTitle'
 import { MetaPost } from 'src/components/shared/MetaPost'
-import type { VFC } from 'react'
 import { Author, Category, Image } from 'src/models/posts'
 
 type Props = {
