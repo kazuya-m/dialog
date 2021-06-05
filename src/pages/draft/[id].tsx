@@ -1,5 +1,6 @@
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
+import type { VFC } from 'react'
 import { useEffect } from 'react'
 import { PostBody } from 'src/components/post/PostBody'
 import { PostHeader } from 'src/components/post/PostHeader'
@@ -10,17 +11,10 @@ import { BackToHome } from 'src/components/shared/BackToHome'
 import { Container } from 'src/components/shared/Container'
 import { SectionSeparator } from 'src/components/utils/separator/SectionSeparator'
 import { getDraftPostById } from 'src/lib/microcms/client'
-import type { VFC } from 'react'
 import { PostDetail } from 'src/models/posts'
-import { ParsedUrlQuery } from 'node:querystring'
-import type { GetStaticPaths, GetStaticProps } from 'next'
 
 type Props = {
   post: Omit<PostDetail, 'publishedAt'>
-}
-
-interface Params extends ParsedUrlQuery {
-  id: string
 }
 
 type PreviewData = {
@@ -98,7 +92,6 @@ export const getStaticProps = async ({ previewData }: PreviewData) => {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/require-await
 export const getStaticPaths = async () => {
   return { paths: [], fallback: 'blocking' }
 }
