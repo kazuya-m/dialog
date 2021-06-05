@@ -2,26 +2,24 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    node: true,
   },
   extends: [
-    'plugin:react/recommended',
-    'airbnb',
-    'airbnb/hooks',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:react/recommended',
+    'plugin:jsx-a11y/recommended',
     'prettier',
   ],
+
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
       js: true,
     },
-    ecmaVersion: 12,
-    project: './tsconfig.eslint.json',
+    ecmaVersion: 2021,
     sourceType: 'module',
     tsconfigRootDir: __dirname,
   },
@@ -34,7 +32,6 @@ module.exports = {
     'import/newline-after-import': 'error',
     'import/no-default-export': 'error',
     'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-unsafe-assignment': 'off',
@@ -42,7 +39,6 @@ module.exports = {
     '@typescript-eslint/no-unsafe-call': 'off',
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
-    'react/destructuring-assignment': ['error', 'never'],
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
@@ -58,5 +54,6 @@ module.exports = {
     'import/resolver': {
       typescript: { project: './' },
     },
+    react: { version: 'detect' },
   },
 }

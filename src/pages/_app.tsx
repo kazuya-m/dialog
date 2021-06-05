@@ -1,6 +1,6 @@
 import '../styles/index.css'
-import type { AppProps } from 'next/app'
 
+import type { AppProps } from 'next/app'
 import { useRouter } from 'next/dist/client/router'
 import { useEffect } from 'react'
 import { existsGaId, pageView } from 'src/lib/gtag'

@@ -1,6 +1,5 @@
-import { PostPreview } from 'src/components/feed/PostPreview'
-
 import type { VFC } from 'react'
+import { PostPreview } from 'src/components/feed/PostPreview'
 import type { Posts } from 'src/models/posts'
 
 type Props = {

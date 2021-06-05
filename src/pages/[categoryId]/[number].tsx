@@ -1,13 +1,21 @@
+import type { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
+import type { VFC } from 'react'
 import { PostsFeed } from 'src/components/feed/PostsFeed'
 import { Layout } from 'src/components/separate/Layout'
 import { Container } from 'src/components/shared/Container'
 import { Intro } from 'src/components/shared/Intro'
 import { Pagination } from 'src/components/shared/Pagination'
 import { getPostsByCategoryPerPage } from 'src/lib/microcms/client'
+import type { Posts } from 'src/models/posts'
 
-export const CategoryPage = ({ posts, totalCount }) => {
+type Props = {
+  posts: Array<Posts>
+  totalCount: number
+}
+
+export const CategoryPage: VFC<Props> = ({ posts, totalCount }) => {
   const router = useRouter()
   if (!router.isFallback && !posts[0]) {
     return <ErrorPage statusCode={404} />
@@ -23,9 +31,8 @@ export const CategoryPage = ({ posts, totalCount }) => {
   )
 }
 
-// データを取得
-export const getStaticProps = async (context) => {
-  const { categoryId, number } = context.params
+export const getStaticProps: GetStaticProps<Props, { categoryId: string; number: string }> = async ({ params }) => {
+  const { categoryId, number } = { ...params }
 
   const posts = await getPostsByCategoryPerPage(categoryId, number)
 
@@ -38,8 +45,7 @@ export const getStaticProps = async (context) => {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/require-await
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   return { paths: [], fallback: 'blocking' }
 }
 

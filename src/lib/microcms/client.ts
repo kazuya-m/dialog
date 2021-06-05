@@ -1,10 +1,6 @@
-import { createClient } from 'microcms-js-sdk'
 import { PER_PAGE } from 'src/constants'
-
-export const client = createClient({
-  serviceDomain: process.env.MICROCMS_DOMAIN,
-  apiKey: process.env.API_KEY,
-})
+import { client } from 'src/lib/microcms/createClient'
+import { ResponseGetPostDetail, ResponseGetPostDetailAsPreview, ResponseGetPostsPerPage } from 'src/lib/microcms/models'
 
 // 記事詳細取得時に取得する要素
 const postFields =
@@ -17,8 +13,8 @@ const postDraftFields =
   'id,title,body,category.id,category.name,category.thumbnail.url,author.id,author.name,author.icon.url,author.accountName,author.url,author.resource,thumbnail.url'
 
 // 記事詳細を取得
-export const getPostById = async (id) => {
-  const post = await client.get({
+export const getPostById = async (id: string | undefined) => {
+  const post = await client.get<ResponseGetPostDetail>({
     endpoint: 'posts',
     contentId: id,
     queries: {
@@ -31,8 +27,8 @@ export const getPostById = async (id) => {
 }
 
 // 記事下書きを取得
-export const getDraftPostById = async (id, draftKey) => {
-  const post = await client.get({
+export const getDraftPostById = async (id: string, draftKey: string) => {
+  const post = await client.get<ResponseGetPostDetailAsPreview>({
     endpoint: 'posts',
     contentId: id,
     queries: {
@@ -45,24 +41,12 @@ export const getDraftPostById = async (id, draftKey) => {
   return post
 }
 
-// 全記事の数を取得
-export const getAllPostsTotalCount = async () => {
-  const response = await client.get({
-    endpoint: 'posts',
-    queries: {
-      limit: 0,
-      fields: 'totalCount',
-    },
-  })
-  return response.totalCount
-}
-
 // 1ページ分の記事を取得
-export const getPostsPerPage = async (offset) => {
+export const getPostsPerPage = async (offset: string | undefined) => {
   const offsetNumber = Number(offset)
   // 0(index)の場合は0
   const offsetPerPage = offsetNumber !== 0 ? (offsetNumber - 1) * PER_PAGE : 0
-  const posts = await client.get({
+  const posts = await client.get<ResponseGetPostsPerPage>({
     endpoint: 'posts',
     queries: {
       orders: '-publishedAt',
@@ -75,25 +59,12 @@ export const getPostsPerPage = async (offset) => {
   return posts
 }
 
-// カテゴリ毎の全記事数を取得
-export const getPostsCountCategories = async (categoryId) => {
-  const response = await client.get({
-    endpoint: 'categories',
-    queries: {
-      filters: `category[equals]${categoryId}`,
-      limit: 0,
-      fields: 'totalCount',
-    },
-  })
-  return response.totalCount
-}
-
 // カテゴリ毎かつ1ページ分の記事を取得
-export const getPostsByCategoryPerPage = async (categoryId, offset) => {
+export const getPostsByCategoryPerPage = async (categoryId: string | undefined, offset: string | undefined) => {
   const offsetNumber = Number(offset)
   const offsetPerPage = offsetNumber !== 0 ? (offsetNumber - 1) * PER_PAGE : 0
 
-  const posts = await client.get({
+  const posts = await client.get<ResponseGetPostsPerPage>({
     endpoint: 'posts',
     queries: {
       orders: '-publishedAt',
