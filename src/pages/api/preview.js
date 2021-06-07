@@ -1,4 +1,4 @@
-import { client } from 'src/lib/microcms/client'
+import { client } from 'src/lib/microcms/createClient'
 
 export default async (req, res) => {
   if (!req.query.id) {
