@@ -13,7 +13,7 @@ export const Header = () => {
               <span className="text-black-900">LOG</span>
             </a>
           </Link>
-          <p className="text-xs text-black-300 mt-0.5">浦和レッズをもっとサポートするためのコミュニティ</p>
+          <p className="text-xs text-black-300 mt-0.5 font-light">浦和レッズをもっとサポートするためのコミュニティ</p>
         </p>
       </div>
       <SectionSeparator />
