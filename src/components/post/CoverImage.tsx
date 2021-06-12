@@ -4,11 +4,11 @@ import type { VFC } from 'react'
 type Props = {
   title: string
   src: string
-  height: number
-  width: number
+  height?: number
+  width?: number
 }
 
-export const CoverImage: VFC<Props> = ({ title, src, height, width }) => {
+export const CoverImage: VFC<Props> = ({ title, src, height = 620, width = 1240 }) => {
   return (
     <Image
       src={src}

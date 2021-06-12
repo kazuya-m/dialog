@@ -2,9 +2,11 @@ import { PER_PAGE } from 'src/constants'
 import { client } from 'src/lib/microcms/createClient'
 import { ResponseGetPostDetail, ResponseGetPostDetailAsPreview, ResponseGetPostsPerPage } from 'src/lib/microcms/models'
 
+//関連記事
+const relatedArticles =
+  'relatedArticles.id,relatedArticles.title,relatedArticles.category.thumbnail.url,relatedArticles.thumbnail.url'
 // 記事詳細取得時に取得する要素
-const postFields =
-  'id,publishedAt,title,body,category.id,category.name,category.thumbnail.url,author.id,author.name,author.icon.url,author.accountName,author.url,author.resource,thumbnail.url'
+const postFields = `id,publishedAt,title,body,category.id,category.name,category.thumbnail.url,author.id,author.name,author.icon.url,author.accountName,author.url,author.resource,thumbnail.url,${relatedArticles}`
 // 記事一覧取得時に取得する要素
 const postPreviewFields =
   'id,publishedAt,title,category.id,category.name,category.thumbnail.url,author.name,author.icon.url,thumbnail.url'
@@ -19,7 +21,7 @@ export const getPostById = async (id: string | undefined) => {
     contentId: id,
     queries: {
       fields: postFields,
-      depth: 1,
+      depth: 2,
     },
     useGlobalDraftKey: false,
   })

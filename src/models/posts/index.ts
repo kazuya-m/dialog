@@ -18,6 +18,13 @@ export type Author = {
   resource?: string
 }
 
+export type RelatedArticles = {
+  id: string
+  title: string
+  category: Pick<Category, 'thumbnail'>
+  thumbnail?: Image
+}
+
 export type Posts = {
   id: string
   publishedAt: string
@@ -35,4 +42,5 @@ export type PostDetail = {
   category: Category
   author: Author
   thumbnail?: Image
+  relatedArticles?: Array<RelatedArticles>
 }
