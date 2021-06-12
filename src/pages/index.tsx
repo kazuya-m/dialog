@@ -17,7 +17,9 @@ export const Index: VFC<Props> = ({ posts, totalCount }) => {
   return (
     <Layout>
       <Container>
-        <Intro headline="LATEST ARTICLES" />
+        <div className="mt-6">
+          <Intro headline="LATEST ARTICLES" />
+        </div>
         <PostsFeed posts={posts} />
         <Pagination path="page" totalCount={totalCount} />
       </Container>
