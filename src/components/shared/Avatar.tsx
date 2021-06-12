@@ -4,12 +4,14 @@ import type { VFC } from 'react'
 type Props = {
   name: string
   picture: string
+  width?: number
+  height?: number
 }
 
-export const Avatar: VFC<Props> = ({ name, picture }) => {
+export const Avatar: VFC<Props> = ({ name, picture, width = 32, height = 32 }) => {
   return (
     <div className="flex items-center justify-start">
-      <Image src={picture} width={32} height={32} alt={name} className="rounded-full" />
+      <Image src={picture} width={width} height={height} alt={name} className="rounded-full" />
       <div className="ml-2 text-sm">{name}</div>
     </div>
   )
