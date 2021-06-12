@@ -9,6 +9,7 @@ export type Contents = {
   category: Category
   author: Author
   thumbnail?: Image
+  relatedArticles: Array<RelatedArticles>
 }
 
 // 記事詳細(通常)
@@ -22,4 +23,12 @@ export type ResponseGetPostsPerPage = {
   totalCount: number
   offset: number
   limit: number
+}
+
+export type RelatedArticles = {
+  id: string
+  title: string
+  author: Author
+  category: Pick<Category, 'thumbnail'>
+  thumbnail?: Image
 }

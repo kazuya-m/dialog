@@ -2,6 +2,7 @@ import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
 import type { VFC } from 'react'
 import { useEffect } from 'react'
+import { PostFeedMini } from 'src/components/feed/PostFeedMini'
 import { PostBody } from 'src/components/post/PostBody'
 import { PostHeader } from 'src/components/post/PostHeader'
 import { Reprinting } from 'src/components/post/Reprinting'
@@ -9,6 +10,7 @@ import { SNSShare } from 'src/components/post/SNSShare'
 import { Layout } from 'src/components/separate/Layout'
 import { BackToHome } from 'src/components/shared/BackToHome'
 import { Container } from 'src/components/shared/Container'
+import { Intro } from 'src/components/shared/Intro'
 import { SectionSeparator } from 'src/components/utils/separator/SectionSeparator'
 import { getDraftPostById } from 'src/lib/microcms/client'
 import { PostDetail } from 'src/models/posts'
@@ -73,6 +75,12 @@ export const Draft: VFC<Props> = ({ post }) => {
         <div className="mt-8 mb-2">
           <SNSShare title={post.title} accountName={post.author.accountName} />
         </div>
+        {post.relatedArticles?.length ? (
+          <div className="mt-2 mb-4">
+            <Intro headline="RELATED ARTICLES" />
+            <PostFeedMini posts={post.relatedArticles} />
+          </div>
+        ) : null}
         <div className="flex justify-center mb-6">
           <BackToHome />
         </div>
