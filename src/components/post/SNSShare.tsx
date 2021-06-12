@@ -23,12 +23,12 @@ export const SNSShare: VFC<Props> = ({ title, accountName, withMessage = true })
         </div>
       )}
       <ul className={`flex ${withMessage ? 'justify-center' : 'justify-end'}`}>
-        <li className="px-2 py-4">
+        <li className="px-2 py-2">
           <TwitterShareButton title={`${title} | @${accountName}\n`} url={`${BASE_URL}${path}`}>
             <FaTwitter style={iconStyles} />
           </TwitterShareButton>
         </li>
-        <li className="px-2 py-4">
+        <li className="px-2 py-2">
           <LineShareButton title={`${title}`} url={`${BASE_URL}${path}`}>
             <FaLine style={iconStyles} />
           </LineShareButton>
