@@ -4,11 +4,11 @@
 
 [https://dialog.diamonds/](https://dialog.diamonds/)
 
-### Stacks
+### Skills
 
 - Next.js
 - TypeScript
 - Tailwind CSS
-- Vercel
 - microCMS
+- Vercel
 - ESLint / Prettier
