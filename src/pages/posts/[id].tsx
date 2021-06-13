@@ -77,7 +77,7 @@ export const Post: VFC<Props> = ({ post }) => {
               <PostFeedMini posts={post.relatedArticles} />
             </div>
           ) : null}
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-7">
             <BackToHome />
           </div>
         </section>
