@@ -25,7 +25,7 @@ export const PostPreview: VFC<Props> = ({ title, thumbnail, date, author, id, ca
       </div>
       <Link as={`/posts/${id}`} href="/posts/[id]">
         <a className="hover:text-black-300">
-          <h2 className="mb-2 ml-1 text-lg font-semibold leading-snug hover:text-black-300">{title}</h2>
+          <h2 className="mb-2 ml-1 text-lg font-semibold leading-snug hover:text-black-200">{title}</h2>
         </a>
       </Link>
       <MetaPost category={category} author={author} date={date} />
