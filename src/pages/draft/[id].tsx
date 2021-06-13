@@ -76,12 +76,12 @@ export const Draft: VFC<Props> = ({ post }) => {
           <SNSShare title={post.title} accountName={post.author.accountName} />
         </div>
         {post.relatedArticles?.length ? (
-          <div className="mt-2 mb-4">
+          <div className="mt-6">
             <Intro headline="RELATED ARTICLES" />
             <PostFeedMini posts={post.relatedArticles} />
           </div>
         ) : null}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center my-6">
           <BackToHome />
         </div>
       </Container>

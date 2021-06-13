@@ -72,7 +72,7 @@ export const Post: VFC<Props> = ({ post }) => {
             <SNSShare title={post.title} accountName={post.author.accountName} />
           </div>
           {post.relatedArticles?.length ? (
-            <div className="mt-2 mb-4">
+            <div className="my-6">
               <Intro headline="RELATED ARTICLES" />
               <PostFeedMini posts={post.relatedArticles} />
             </div>

@@ -11,11 +11,11 @@ type Props = {
 
 export const Reprinting: VFC<Props> = ({ name, accountName, url, resource }) => {
   return (
-    <div className="flex items-center px-4 py-6 bg-yellow-100 bg-opacity-70">
-      <div className="w-20">
-        <ExclamationCircleIcon className="w-8 h-8 text-yellow-300" />
+    <div className="flex items-center justify-center px-4 py-6 bg-yellow-100 bg-opacity-70">
+      <div className="w-20 md:w-16">
+        <ExclamationCircleIcon className="w-8 h-8 text-yellow-300 md:w-10 md:h-10" />
       </div>
-      <div className="text-sm leading-relaxed tracking-wide md:text-base">
+      <div className="px-2 text-sm leading-relaxed tracking-wide md:text-base">
         <p>
           本記事は{name}さんがご自身の{resource}で連載中の記事になります。
         </p>
