@@ -32,7 +32,8 @@ export const CategoryPage: VFC<Props> = ({ posts, totalCount }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props, { categoryId: string; number: string }> = async ({ params }) => {
-  const { categoryId, number } = { ...params }
+  const categoryId = params?.categoryId ?? ''
+  const number = params?.number ?? ''
 
   const posts = await getPostsByCategoryPerPage(categoryId, number)
 

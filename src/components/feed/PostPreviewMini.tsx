@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import type { VFC } from 'react'
 import { CoverImage } from 'src/components/post/CoverImage'
-import { Avatar } from 'src/components/shared/Avatar'
-import { Author, Image } from 'src/models/posts'
+import { Image } from 'src/models/posts'
 
 type Props = {
   id: string

@@ -87,7 +87,7 @@ export const Post: VFC<Props> = ({ post }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props, { id: string }> = async ({ params }) => {
-  const id = params?.id
+  const id = params?.id ?? ''
   const postData = await getPostById(id)
   return {
     props: {

@@ -9,13 +9,13 @@ const relatedArticles =
 const postFields = `id,publishedAt,title,body,category.id,category.name,category.thumbnail.url,author.id,author.name,author.icon.url,author.accountName,author.url,author.resource,thumbnail.url,${relatedArticles}`
 // 記事一覧取得時に取得する要素
 const postPreviewFields =
-  'id,publishedAt,title,category.id,category.name,category.thumbnail.url,author.name,author.icon.url,thumbnail.url'
+  'id,publishedAt,title,category.id,category.name,category.thumbnail.url,author.name,author.icon.url,author.accountName,thumbnail.url'
 // 下書き取得時に取得する要素
 const postDraftFields =
   'id,title,body,category.id,category.name,category.thumbnail.url,author.id,author.name,author.icon.url,author.accountName,author.url,author.resource,thumbnail.url'
 
 // 記事詳細を取得
-export const getPostById = async (id: string | undefined) => {
+export const getPostById = async (id: string) => {
   const post = await client.get<ResponseGetPostDetail>({
     endpoint: 'posts',
     contentId: id,
@@ -44,7 +44,7 @@ export const getDraftPostById = async (id: string, draftKey: string) => {
 }
 
 // 1ページ分の記事を取得
-export const getPostsPerPage = async (offset: string | undefined) => {
+export const getPostsPerPage = async (offset: string) => {
   const offsetNumber = Number(offset)
   // 0(index)の場合は0
   const offsetPerPage = offsetNumber !== 0 ? (offsetNumber - 1) * PER_PAGE : 0
@@ -62,7 +62,7 @@ export const getPostsPerPage = async (offset: string | undefined) => {
 }
 
 // カテゴリ毎かつ1ページ分の記事を取得
-export const getPostsByCategoryPerPage = async (categoryId: string | undefined, offset: string | undefined) => {
+export const getPostsByCategoryPerPage = async (categoryId: string, offset: string) => {
   const offsetNumber = Number(offset)
   const offsetPerPage = offsetNumber !== 0 ? (offsetNumber - 1) * PER_PAGE : 0
 
