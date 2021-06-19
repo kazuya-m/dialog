@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import type { VFC } from 'react'
-import { FaLine, FaTwitter } from 'react-icons/fa'
-import { LineShareButton, TwitterShareButton } from 'react-share'
+import { FaFacebook, FaLine, FaTwitter } from 'react-icons/fa'
+import { FacebookShareButton, LineShareButton, TwitterShareButton } from 'react-share'
 import { BASE_URL } from 'src/constants'
 
 type Props = {
@@ -27,6 +27,11 @@ export const SNSShare: VFC<Props> = ({ title, accountName, withMessage = true })
           <TwitterShareButton title={`${title} | @${accountName}\n`} url={`${BASE_URL}${path}`}>
             <FaTwitter style={iconStyles} />
           </TwitterShareButton>
+        </li>
+        <li className="px-2 py-2">
+          <FacebookShareButton title={`${title}`} url={`${BASE_URL}${path}`}>
+            <FaFacebook style={iconStyles} />
+          </FacebookShareButton>
         </li>
         <li className="px-2 py-2">
           <LineShareButton title={`${title}`} url={`${BASE_URL}${path}`}>
