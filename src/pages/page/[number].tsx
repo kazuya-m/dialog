@@ -32,7 +32,7 @@ export const PostPage: VFC<Props> = ({ posts, totalCount }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props, { number: string }> = async ({ params }) => {
-  const pageNumber = params?.number
+  const pageNumber = params?.number ?? ''
   const data = await getPostsPerPage(pageNumber)
 
   return {
