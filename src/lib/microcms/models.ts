@@ -1,34 +1,15 @@
-import type { Author, Category, Image } from 'src/models/posts'
-
-// 記事詳細モデル
-export type Contents = {
-  id: string
-  publishedAt: string
-  title: string
-  body: string
-  category: Category
-  author: Author
-  thumbnail?: Image
-  relatedArticles: Array<RelatedArticles>
-}
+import type { PostDetail } from 'src/models/posts'
 
 // 記事詳細(通常)
-export type ResponseGetPostDetail = Contents
+export type ResponseGetPostDetail = PostDetail
 
 // 記事詳細(プレビュー)
-export type ResponseGetPostDetailAsPreview = Omit<Contents, 'publishedAt'>
+export type ResponseGetPostDetailAsPreview = Omit<PostDetail, 'publishedAt'>
 
+// 記事一覧
 export type ResponseGetPostsPerPage = {
-  contents: Array<Omit<Contents, 'body'>>
+  contents: Array<Omit<PostDetail, 'body'>>
   totalCount: number
   offset: number
   limit: number
-}
-
-export type RelatedArticles = {
-  id: string
-  title: string
-  author: Author
-  category: Pick<Category, 'thumbnail'>
-  thumbnail?: Image
 }
