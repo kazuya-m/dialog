@@ -16,7 +16,7 @@ export const MetaPost: VFC<Props> = ({ category, author, date }) => {
     <div>
       <CategoryInfo id={category.id} name={category.name} />
       <div className="flex items-center justify-between my-4 text-sm">
-        <Avatar name={author.name} picture={author.icon.url} />
+        <Avatar name={author.name} picture={author.icon.url} accountName={author.accountName} />
         <div className="flex items-center text-black-300">
           <CalendarIcon className="h-4 w-4 mr-0.5 inline" />
           <DateDistanceFormatter utcDateString={date} />
