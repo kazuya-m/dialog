@@ -15,16 +15,20 @@ const postDraftFields =
   'id,title,body,category.id,category.name,category.thumbnail.url,author.id,author.name,author.icon.url,author.accountName,author.url,author.resource,thumbnail.url'
 
 // 記事詳細を取得
-export const getPostById = async (id: string) => {
-  const post = await client.get<ResponseGetPostDetail>({
-    endpoint: 'posts',
-    contentId: id,
-    queries: {
-      fields: postFields,
-      depth: 2,
-    },
-    useGlobalDraftKey: false,
-  })
+export const getPostById = async (id?: string) => {
+  const post = await client
+    .get<ResponseGetPostDetail>({
+      endpoint: 'posts',
+      contentId: id,
+      queries: {
+        fields: postFields,
+        depth: 2,
+      },
+      useGlobalDraftKey: false,
+    })
+    .catch((e) => {
+      return null
+    })
   return post
 }
 
