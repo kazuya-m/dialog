@@ -1,6 +1,5 @@
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
-import { useRouter } from 'next/router'
 import type { VFC } from 'react'
 import { useEffect } from 'react'
 import { PostFeedMini } from 'src/components/feed/PostFeedMini'
