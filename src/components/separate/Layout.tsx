@@ -7,8 +7,8 @@ import { Footer } from './Footer'
 import { Header } from './Header'
 
 type UniqueMeta = {
-  title: string
-  cardImage: string
+  title?: string
+  cardImage?: string
   description?: string
 }
 

@@ -17,11 +17,10 @@ import { getPostById } from 'src/lib/microcms/client'
 import { PostDetail } from 'src/models/posts'
 
 type Props = {
-  post: PostDetail
+  post: PostDetail | null
 }
 
 export const Post: VFC<Props> = ({ post }) => {
-  const router = useRouter()
   // Twitter埋め込みスクリプトの反映
   useEffect(() => {
     const s = document.createElement('script')
@@ -29,58 +28,60 @@ export const Post: VFC<Props> = ({ post }) => {
     s.setAttribute('async', 'true')
     document.head.appendChild(s)
   }, [])
-  // 404ハンドリング
-  if (!router.isFallback && !post?.id) {
-    return <ErrorPage statusCode={404} />
-  }
 
   const meta = {
-    title: post.title,
-    cardImage: post.thumbnail?.url ?? post.category.thumbnail.url,
+    title: post?.title,
+    cardImage: post?.thumbnail?.url ?? post?.category?.thumbnail.url,
   }
 
   return (
     <Layout uniqueMeta={meta}>
       <Container>
-        <article className="max-w-2xl mx-auto mt-10 mb-6">
-          <PostHeader
-            title={post.title}
-            thumbnail={post.thumbnail ?? post.category.thumbnail}
-            date={post.publishedAt}
-            author={post.author}
-            category={post.category}
-          />
-          <SectionSeparator />
-          <div className="mt-6">
-            <SNSShare title={post.title} accountName={post.author.accountName} withMessage={false} />
-          </div>
-          {post?.author?.url && post?.author.resource && (
-            <div className="mt-6 mb-12">
-              <Reprinting
-                name={post.author.name}
-                accountName={post.author.accountName}
-                url={post.author.url}
-                resource={post.author.resource}
+        {!post ? (
+          <ErrorPage statusCode={404} />
+        ) : (
+          <>
+            <article className="max-w-2xl mx-auto mt-10 mb-6">
+              <PostHeader
+                title={post.title}
+                thumbnail={post.thumbnail ?? post.category.thumbnail}
+                date={post.publishedAt}
+                author={post.author}
+                category={post.category}
               />
-            </div>
-          )}
-          <PostBody content={post.body} />
-          <SectionSeparator />
-        </article>
-        <section className="max-w-2xl mx-auto">
-          <div className="mt-6">
-            <SNSShare title={post.title} accountName={post.author.accountName} />
-          </div>
-          {post.relatedArticles?.length ? (
-            <div className="my-6">
-              <Intro headline="RELATED ARTICLES" />
-              <PostFeedMini posts={post.relatedArticles} />
-            </div>
-          ) : null}
-          <div className="flex justify-center mb-6">
-            <BackToHome />
-          </div>
-        </section>
+              <SectionSeparator />
+              <div className="mt-6">
+                <SNSShare title={post.title} accountName={post.author.accountName} withMessage={false} />
+              </div>
+              {post?.author?.url && post?.author.resource && (
+                <div className="mt-6 mb-12">
+                  <Reprinting
+                    name={post.author.name}
+                    accountName={post.author.accountName}
+                    url={post.author.url}
+                    resource={post.author.resource}
+                  />
+                </div>
+              )}
+              <PostBody content={post.body} />
+              <SectionSeparator />
+            </article>
+            <section className="max-w-2xl mx-auto">
+              <div className="mt-6">
+                <SNSShare title={post.title} accountName={post.author.accountName} />
+              </div>
+              {post.relatedArticles?.length ? (
+                <div className="my-6">
+                  <Intro headline="RELATED ARTICLES" />
+                  <PostFeedMini posts={post.relatedArticles} />
+                </div>
+              ) : null}
+              <div className="flex justify-center mb-6">
+                <BackToHome />
+              </div>
+            </section>
+          </>
+        )}
       </Container>
     </Layout>
   )
